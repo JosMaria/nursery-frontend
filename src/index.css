@@ -8,3 +8,9 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 0.6em;
 }
+
+.app-container { 
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto
+} 
