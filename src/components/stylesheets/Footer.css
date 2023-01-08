@@ -15,13 +15,27 @@
   padding: 2em;
 }
 
-.footer-section {
-  width: 30em;
-}
-
 .footer-section-location-social {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
+
+/*  start FooterSection component */
+.footer-section {
+  width: 30em;
+}
+/*  end FooterSection component */
+
+/* start InformationReference component */
+.information-reference-container {
+  display: flex; 
+  align-items: center;
+  padding: 0.4em;
+}
+
+.information-reference-container > div {
+  padding-right: 1em;
+}
+/* end InformationReference component */
