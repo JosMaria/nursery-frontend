@@ -1,5 +1,5 @@
-import { FaFacebookF, FaInstagram, FaPhoneAlt } from "react-icons/fa";
-import { IoLocationSharp } from "react-icons/io5";
+import { FaFacebookF, FaInstagram, FaPhoneAlt } from 'react-icons/fa';
+import { IoLocationSharp } from 'react-icons/io5';
 
 import './stylesheets/Footer.css';
 
@@ -37,8 +37,11 @@ const CopyrightSection = () => (
     <p>
       <b>DERECHOS RESERVADOS  ©  2023 · </b>
       <a 
-      href="https://www.umss.edu.bo/" 
-      style={{ color: "#ffffff", textDecoration: "underline" }}><b>UNIVERSIDAD MAYOR DE SAN SIMÓN</b></a>
+        href='https://www.umss.edu.bo/' 
+        style={{ color: '#ffffff', textDecoration: 'underline' }}
+      >
+        <b>UNIVERSIDAD MAYOR DE SAN SIMÓN</b>
+      </a>
     </p>  
   </div>
 );
@@ -59,13 +62,15 @@ const FooterSection = ({ title, content }: FooterSectionProps) => (
 const FooterSectionReference = () => {
   const toLocation: JSX.Element = (
     <InformationReference 
+      key={1}
       icon={<IoLocationSharp size='1.5em' />}
       content='Km5 - Avenida petrolera Facultad de ciencias Rurales y Territoriales' 
     />
   )
 
   const toPhone: JSX.Element = (
-    <InformationReference 
+    <InformationReference
+      key={2} 
       icon={<FaPhoneAlt size='1.5em' />}
       content='+(591) 79368354'
     />
@@ -81,7 +86,7 @@ const FooterSectionReference = () => {
       </div>
       <SocialMediaSection 
         title='Estamos en'
-        children={[<FaFacebookF size='1.5em' />, <FaInstagram size='1.5em' />]}
+        children={[<FaFacebookF key={1} size='1.5em' />, <FaInstagram key={2} size='1.5em' />]}
       />
     </div>
   )
@@ -121,7 +126,7 @@ interface SectionInformationReferenceProps {
 }
 
 const SectionInformationReference = ({ title, children }: SectionInformationReferenceProps) => (
-  <div className='footer-section-location'>
+  <div>
     <h2>{title}</h2>
     <br />
     {children}
