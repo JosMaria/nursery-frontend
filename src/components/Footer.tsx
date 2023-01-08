@@ -1,4 +1,4 @@
-import { FaFacebookF, FaPhoneAlt } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaPhoneAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 
 import './stylesheets/Footer.css';
@@ -35,12 +35,12 @@ export const Footer = () => {
   )
 }
 
-interface FooterSectionInterface {
+interface FooterSectionProps {
   title: string,
   content: string
 }
 
-const FooterSection = ({ title, content }: FooterSectionInterface) => (
+const FooterSection = ({ title, content }: FooterSectionProps) => (
   <div className='footer-section'>
     <h2>{title}</h2>
     <br />
@@ -49,47 +49,73 @@ const FooterSection = ({ title, content }: FooterSectionInterface) => (
 )
 
 const FooterSectionReference = () => {
+  const toLocation: JSX.Element = (
+    <InformationReference 
+      icon={<IoLocationSharp size='1.5em' />}
+      content='Km5 - Avenida petrolera Facultad de ciencias Rurales y Territoriales' 
+    />
+  )
+
+  const toPhone: JSX.Element = (
+    <InformationReference 
+      icon={<FaPhoneAlt size='1.5em' />}
+      content='+(591) 79368354'
+    />
+  )
+
   return (
-    <div className='footer-section'>
-          <div className='footer-section-location-social'>
-            <div className='footer-section-location'>
-              <h2>Informacion de contacto</h2>
-              <br />
-              <InformationReference 
-                icon={<IoLocationSharp size='1.5em' />}
-                content='Km5 - Avenida petrolera Facultad de ciencias Rurales y Territoriales' 
-              />
-
-              <InformationReference 
-                icon={<FaPhoneAlt size='1.5em' />}
-                content='+(591) 79368354'
-              />
-
-            </div>
-            <div className='footer-icons-container'>
-              <div style={{padding: '1em'}}>
-                <p>Siguenos en:</p>
-                <br />
-                <FaFacebookF size='1.5em' />
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className='footer-third-section'>
+      <div className='footer-section-location-social'>
+        <SectionInformationReference 
+          title='Informacion de contacto'
+          children={[toLocation, toPhone]}
+        /> 
+      </div>
+      <SocialMediaSection 
+        title='Estamos en'
+        children={[<FaFacebookF size='1.5em' />, <FaInstagram size='1.5em' />]}
+      />
+    </div>
   )
 }
 
-interface InformationReferenceInterface {
+interface SocialMediaSectionProps {
+  title: string,
+  children ?: JSX.Element | JSX.Element[]  
+}
+
+const SocialMediaSection = ({ title, children }: SocialMediaSectionProps) => (
+  <div>
+    <p><b>{title}</b></p>
+    <div className='icons-social-media'>
+      {children}
+    </div>
+  </div>
+)
+
+interface InformationReferenceProps {
   icon: JSX.Element
   content: string
 }
 
-const InformationReference = ({ icon, content }: InformationReferenceInterface) => {
-  return (
-    <div className='information-reference-container'>
-      <div>
-        {icon}
-      </div>
-      <p>{content}</p>
+const InformationReference = ({ icon, content }: InformationReferenceProps) => (
+  <div className='information-reference-container'>
+    <div>
+      {icon}
     </div>
-  )
+    <p>{content}</p>
+  </div>
+)
+
+interface SectionInformationReferenceProps {
+  title: string,
+  children?: JSX.Element | JSX.Element[]
 }
+
+const SectionInformationReference = ({ title, children }: SectionInformationReferenceProps) => (
+  <div className='footer-section-location'>
+    <h2>{title}</h2>
+    <br />
+    {children}
+  </div>
+)

@@ -39,3 +39,15 @@
   padding-right: 1em;
 }
 /* end InformationReference component */
+
+.footer-third-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.icons-social-media {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+  padding-top: 1em;
+}
