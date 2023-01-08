@@ -6,7 +6,6 @@ import './stylesheets/Footer.css';
 export const Footer = () => {
   return (
     <footer className='footer-container'>
-      
       <div className='footer-section-container'>
         <FooterSection 
           title='Información'
@@ -28,12 +27,21 @@ export const Footer = () => {
 
         <FooterSectionReference />
       </div>
-      <div>
-        section end
-      </div>
+      <CopyrightSection />
     </footer>
   )
 }
+
+const CopyrightSection = () => (
+  <div className='copyright-section-container'>
+    <p>
+      <b>DERECHOS RESERVADOS  ©  2023 · </b>
+      <a 
+      href="https://www.umss.edu.bo/" 
+      style={{ color: "#ffffff", textDecoration: "underline" }}><b>UNIVERSIDAD MAYOR DE SAN SIMÓN</b></a>
+    </p>  
+  </div>
+);
 
 interface FooterSectionProps {
   title: string,
