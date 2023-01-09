@@ -32,11 +32,13 @@ const Product = ({ product }: HomePageProps ) => {
       </div>
       
       <div className='product-bottom'>
-        <div className='identification-container'>
-          <p><b>{product.commonName}</b></p>
-          <p><i>{product.scientificName} {product.firstLetterLastname}</i></p>
-          <p>{product.family}</p>
-        </div>
+        <ProductIdentification
+          commonName={product.commonName}
+          scientificName={product.scientificName}
+          firstLetterLastname={product.firstLetterLastname}
+          
+          family={product.family}
+        />
         {
           selectIconToStatus(product.status)
         }
@@ -44,6 +46,21 @@ const Product = ({ product }: HomePageProps ) => {
     </div>
   )
 }
+
+interface ProductIdentificationProps {
+  commonName: string,
+  scientificName?: string,
+  firstLetterLastname?: string,
+  family?: string
+}
+
+const ProductIdentification = ({ commonName, scientificName, firstLetterLastname, family }: ProductIdentificationProps) => (
+  <div className='identification-container'>
+    <p><b>{commonName}</b></p>
+    <p><i>{scientificName} {firstLetterLastname}</i></p>
+    <p>{family}</p>
+  </div>
+)
 
 interface ProductStatusProps {
   icon: JSX.Element,
