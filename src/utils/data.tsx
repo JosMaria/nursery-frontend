@@ -32,7 +32,7 @@ export const products: ProductResponseDTO[] = [
     status: 'NON_EXISTENT'
   },
   {
-    id: 1,
+    id: 5,
     commonName: 'cactu estrella example',
     scientificName: 'cactu estrellatus',
     firstLetterLastname: 'l',
@@ -40,7 +40,7 @@ export const products: ProductResponseDTO[] = [
     status: 'AVAILABLE'
   },
   {
-    id: 2,
+    id: 6,
     commonName: 'cactu de verano',
     scientificName: 'cactu veranus',
     firstLetterLastname: 'a',
@@ -48,7 +48,7 @@ export const products: ProductResponseDTO[] = [
     status: 'NON_EXISTENT'
   },
   {
-    id: 3,
+    id: 7,
     commonName: 'cactu inviernus',
     scientificName: 'cactu de inviernus',
     firstLetterLastname: 'g',
@@ -56,7 +56,29 @@ export const products: ProductResponseDTO[] = [
     status: 'CONSERVATION'
   },
   {
-    id: 4,
+    id: 8,
+    commonName: 'cactu primavera',
+    family: 'family-cactu',
+    status: 'NON_EXISTENT'
+  },
+  {
+    id: 9,
+    commonName: 'cactu de verano',
+    scientificName: 'cactu veranus',
+    firstLetterLastname: 'a',
+    family: 'family-cactu',
+    status: 'NON_EXISTENT'
+  },
+  {
+    id: 10,
+    commonName: 'cactu inviernus',
+    scientificName: 'cactu de inviernus',
+    firstLetterLastname: 'g',
+    family: 'family-cactu',
+    status: 'CONSERVATION'
+  },
+  {
+    id: 11,
     commonName: 'cactu primavera',
     family: 'family-cactu',
     status: 'NON_EXISTENT'

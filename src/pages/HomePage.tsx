@@ -1,8 +1,7 @@
-import { ProductResponseDTO } from "../types";
-import { Footer, Product } from "../components";
+import { ProductResponseDTO } from '../types';
+import { Footer, Product, Header  } from '../components';
 
 import './stylesheets/HomePage.css';
-
 
 interface HomePageProps {
   products: ProductResponseDTO[]
@@ -11,6 +10,7 @@ interface HomePageProps {
 export const HomePage = ({ products }: HomePageProps) => {
   return (
     <>
+      <Header />
       <section>
       {
         products.map(product => 

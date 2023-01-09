@@ -1,4 +1,6 @@
 section {
+  background-color: #90B77D;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
