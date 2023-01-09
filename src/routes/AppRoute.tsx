@@ -7,7 +7,7 @@ const product = {
   scientificName: 'cactu estrellatus',
   firstLetterLastname: 'l',
   family: 'family-cactu',
-  status: 'conservation'
+  status: 'CONSERVATION'
 }
 
 export const AppRoute = () => {
