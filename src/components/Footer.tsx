@@ -5,8 +5,8 @@ import './stylesheets/Footer.css';
 
 export const Footer = () => {
   return (
-    <footer className='footer-container'>
-      <div className='footer-section-container'>
+    <footer>
+      <div>
         <FooterSection 
           title='Información'
           content='La Universidad Mayor de San Simón (UMSS), fundada por Ley del 5 de noviembre de 1832, durante la 
