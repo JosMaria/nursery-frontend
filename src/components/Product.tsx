@@ -5,19 +5,19 @@ import PlantImage from '../assets/image-plant.jpeg';
 
 import './stylesheets/Product.css';
 
-export const Product = ({ identification, status }: ProductResponseDTO) => {
+export const Product = ({ id, commonName, scientificName, firstLetterLastname, family, status }: ProductResponseDTO) => {
   const iconStatus: JSX.Element = getIconGivenStatus(status);
 
   return (
     <div className='product-container'>
-      <ImageProduct alt={identification.commonName} />
+      <ImageProduct alt={commonName} />
       <div className='product-bottom'>
         <ProductIdentification
-          id={identification.id}
-          commonName={identification.commonName}
-          scientificName={identification.scientificName}
-          firstLetterLastname={identification.firstLetterLastname}
-          family={identification.family}
+          id={id}
+          commonName={commonName}
+          scientificName={scientificName}
+          firstLetterLastname={firstLetterLastname}
+          family={family}
         />
         { iconStatus }
       </div>

@@ -8,7 +8,6 @@ export interface IdentificationResponseDTO {
   family?: string,
 }
 
-export interface ProductResponseDTO {
-  identification: IdentificationResponseDTO,
+export interface ProductResponseDTO extends IdentificationResponseDTO {
   status: Status;
 }
