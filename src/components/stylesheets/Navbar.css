@@ -1,0 +1,26 @@
+.navbar-container {
+  display: flex;
+  align-items: stretch;
+  gap: 2em;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-size-adjust: 100%;
+}
+
+.navbar-element {
+  font-weight: 500;
+  
+  flex-grow: 1;
+  font-size: 1.5em;
+
+  text-decoration: none solid #fff auto;
+  color: white;
+  border-bottom: solid #fff 0.1em;
+}
+
+
+.navbar-element:hover {
+  cursor: pointer;
+}
+
