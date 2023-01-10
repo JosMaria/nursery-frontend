@@ -1,13 +1,21 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './stylesheets/Navbar.css';
 
 export const Navbar = () => {
   return (
     <nav className='navbar-container'>
-      <Link className='navbar-element' to='/'>Inicio</Link>
-      <Link className='navbar-element' to='/list'>Listado</Link>
-      <Link className='navbar-element' to='/news'>Novedades</Link>
+      <NavLink 
+        className={({ isActive }) => isActive ? 'navbar-element active' : 'navbar-element'} to='/'>
+          Inicio
+      </NavLink>
+      <NavLink 
+        className={({ isActive }) => isActive ? 'navbar-element active' : 'navbar-element'} to='/list'>
+          Listado
+      </NavLink>
+      <NavLink className={({ isActive }) => isActive ? 'navbar-element active' : 'navbar-element'} to='/news'>
+        Novedades
+      </NavLink>
     </nav>
   )
 }

@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Footer, Header } from '../components'
 import { HomePageContent } from '../pages/content/HomePageContent'
-import { Page } from '../pages/HomePage'
+import { Page } from '../pages/HomePage';
 
 export const AppRoute = () => {
   return (

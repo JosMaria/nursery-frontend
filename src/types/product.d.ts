@@ -1,4 +1,4 @@
-export type Status = 'CONSERVATION' | 'AVAILABLE' | 'NON_EXISTENT';
+export type Status = 'IN_CONSERVATION' | 'AVAILABLE' | 'NON_EXISTENT';
 
 export interface IdentificationResponseDTO {
   id: number,

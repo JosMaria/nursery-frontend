@@ -16,9 +16,12 @@
 
   text-decoration: none solid #fff auto;
   color: white;
-  border-bottom: solid #fff 0.1em;
+  
 }
 
+.navbar-element.active {
+  border-bottom: solid #fff 0.1em;
+}
 
 .navbar-element:hover {
   cursor: pointer;

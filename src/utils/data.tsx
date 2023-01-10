@@ -23,7 +23,7 @@ export const products: ProductResponseDTO[] = [
     scientificName: 'cactu de inviernus',
     firstLetterLastname: 'g',
     family: 'family-cactu',
-    status: 'CONSERVATION'
+    status: 'IN_CONSERVATION'
   },
   {
     id: 4,
@@ -53,7 +53,7 @@ export const products: ProductResponseDTO[] = [
     scientificName: 'cactu de inviernus',
     firstLetterLastname: 'g',
     family: 'family-cactu',
-    status: 'CONSERVATION'
+    status: 'IN_CONSERVATION'
   },
   {
     id: 8,
@@ -75,7 +75,7 @@ export const products: ProductResponseDTO[] = [
     scientificName: 'cactu de inviernus',
     firstLetterLastname: 'g',
     family: 'family-cactu',
-    status: 'CONSERVATION'
+    status: 'IN_CONSERVATION'
   },
   {
     id: 11,

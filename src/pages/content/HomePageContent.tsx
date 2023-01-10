@@ -1,10 +1,23 @@
+import { useEffect, useState } from 'react';
 import { Product } from '../../components'
+import { fetchAllProducts } from '../../services';
 import { ProductResponseDTO } from '../../types';
-import { products } from '../../utils/data';
 
 import './stylesheets/HomePageContent.css'
 
+interface HomePageContentProps {
+  products: ProductResponseDTO[]
+}
+
 export const HomePageContent = () => {
+  
+  const [products, setProducts] = useState(Array<ProductResponseDTO>);
+  
+  useEffect(() => {
+    fetchAllProducts()
+      .then(data => setProducts(data));
+  }, [])
+  
   return (
     <section className='home-page-content'>
       {
