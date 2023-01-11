@@ -65,7 +65,7 @@ export const news: NewsResponseDTO[] = [
   },
   {
     id: 5,
-    title: 'por ti merece la pena esperar',
+    title: 'por ti merece la pena esperar, lo que quiero decir es que te ',
     contentToShow: 'te veo poco, pero te pienso mucho',
     content: 'te veo poco, pero te pienso mucho Cada vez que intento evadirme de ti dejando de verte, a los segundos invades mi mente.' +
               'Una mirada tuya basta para hacerme sonreír, enamorarme, ilusionarme, destrozarme,' + 

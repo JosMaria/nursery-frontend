@@ -30,7 +30,6 @@ const News = ({ title, contentToShow, content, urlImage }: NewsResponseDTO) => (
     
     <div>
       <h1>{title}</h1>
-      <hr />
       <p>{contentToShow}</p>
       <button>Leer mas</button>
     </div>
