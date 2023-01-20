@@ -3,7 +3,7 @@ import { NewsResponseDTO } from '../types';
 export const news: NewsResponseDTO[] = [
   {
     id: 1,
-    title: 'Poemas',
+    title: 'Esta es una prueba para el titulo de la novedad tambien podemos estar en la pagina de catalogo',
     contentToShow: 'te veo poco, pero te pienso mucho',
     content: 'te veo poco, pero te pienso mucho Cada vez que intento evadirme de ti dejando de verte, a los segundos invades mi mente.' +
               'Una mirada tuya basta para hacerme sonreír, enamorarme, ilusionarme, destrozarme,' + 

@@ -1,5 +1,5 @@
 .header-container {
-  background-color: #1E5128;
+  background-color: var(--color-hard);
   width: 100%;
 
   display: flex;

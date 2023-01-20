@@ -2,6 +2,16 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  --color-black: #191A19;
+  --color-hard: #1E5128;
+  --color-medium: #4E9F3D;
+  --color-high: #D8E9A8;
+  --color-white: #FFFFFF;
+
+  --color-black-palette-2: #483838;
+  --color-hard-palette-2: #42855B;
+  --color-medium-palette-2: #90B77D;
+  --color-high-palette-2: #D2D79F;
 }
 
 body {
@@ -14,4 +24,4 @@ body {
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto
-} 
+}
