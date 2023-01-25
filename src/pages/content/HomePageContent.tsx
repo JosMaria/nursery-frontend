@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../../components'
+import { ClassificationNavbar } from '../../components/ClassificationNavbar';
 import { fetchAllProducts } from '../../services';
 import { ProductResponseDTO } from '../../types';
 
@@ -22,6 +23,7 @@ export const HomePageContent = () => {
 
   return (
     <section className='content-container'>
+      <ClassificationNavbar />
       <section className='home-page-content'>
         {
           products.map(product => 

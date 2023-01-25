@@ -4,7 +4,7 @@ export const news: NewsResponseDTO[] = [
   {
     id: 1,
     title: 'Esta es una prueba para el titulo de la novedad tambien podemos estar en la pagina de catalogo',
-    contentToShow: 'te veo poco, pero te pienso mucho',
+    contentToShow: 'esta es el contenido que se va ver en la descripcion visible, esta es el contenido que se va ver en la descripcion visible, esta es el contenido que se va ver en la descripcion visible, esta es el contenido que se va ver en la descripcion visible esta es el contenido que se va ver en la descripcion visible,',
     content: 'te veo poco, pero te pienso mucho Cada vez que intento evadirme de ti dejando de verte, a los segundos invades mi mente.' +
               'Una mirada tuya basta para hacerme sonreír, enamorarme, ilusionarme, destrozarme,' + 
               'Me di cuenta de que me había enamorado de ti cuando entendí que mi canción preferida eran tus palabras,' + 

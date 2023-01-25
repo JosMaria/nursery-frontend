@@ -12,3 +12,12 @@ export const fetchAllProducts = async (numberPage = 0) => {
   });
   return data;  
 }
+
+export const fetchAllProductsByClassification = async (numberPage = 0, classification: string) => {
+  const { data } = await instance.get(`/api/nursery/products/classifications/${classification}`, {
+    params: {
+      page: numberPage
+    }
+  });
+  return data;
+}
