@@ -11,10 +11,8 @@ interface NavbarItemClassificationProps {
   text: string
 }
 
-const NavbarItemClassification = ({ text }: NavbarItemClassificationProps) => {
-  return (
-    <div className='px-5 py-4 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>
-      {text}
-    </div>
-  )
-}
+const NavbarItemClassification = ({ text }: NavbarItemClassificationProps) => (
+  <div className='px-5 py-4 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>
+    {text}
+  </div>
+)

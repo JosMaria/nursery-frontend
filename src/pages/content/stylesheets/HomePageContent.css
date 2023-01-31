@@ -13,13 +13,3 @@
   justify-content: space-evenly;
   align-items: center;  
 }
-
-.button-pagination-container {
-  padding: 2em;
-  display: flex;
-  gap: 3em;
-}
-
-.button-pagination-container > button {
-  padding: 1em;
-}
