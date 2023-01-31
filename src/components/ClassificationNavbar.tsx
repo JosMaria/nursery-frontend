@@ -1,26 +1,20 @@
+export const ClassificationNavbar = () => (
+  <nav className='flex justify-evenly dark:bg-gray-800 text-gray-100 w-full'>
+    {
+      ['Todos', 'Ornamental', 'Forestal', 'Industrial', 'Alimenticia', 'Medicinal', 'Exotica', 'Cactu', 'Frutal', 'Crasa', 'Suculenta']
+        .map((item, index) => <NavbarItemClassification key={index} text={item} />)
+    }
+  </nav>
+)
 
-import './stylesheets/ClassificationNavbar.css';
+interface NavbarItemClassificationProps {
+  text: string
+}
 
-export const ClassificationNavbar = () => {
-  
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-    let text: string | null = e.currentTarget.textContent;
-    console.log(text);
-  }
-  
+const NavbarItemClassification = ({ text }: NavbarItemClassificationProps) => {
   return (
-    <nav className='classification-navbar-container'>
-        <button onClick={handleClick}>Todos</button>
-        <button onClick={handleClick}>Ornamental</button>
-        <button onClick={handleClick}>Forestal</button>
-        <button onClick={handleClick}>Industrial</button>
-        <button onClick={handleClick}>Alimenticia</button>
-        <button onClick={handleClick}>Medicinal</button>
-        <button onClick={handleClick}>Exotica</button>
-        <button onClick={handleClick}>Cactu</button>
-        <button onClick={handleClick}>Frutal</button>
-        <button onClick={handleClick}>Crasa</button>
-        <button onClick={handleClick}>Suculenta</button>
-    </nav>
+    <div className='px-5 py-4 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>
+      {text}
+    </div>
   )
 }
