@@ -2,7 +2,7 @@ import { FaFacebookF, FaInstagram, FaPhoneAlt } from 'react-icons/fa';
 import { IoLocationSharp } from 'react-icons/io5';
 
 export const Footer = () => (
-  <footer className='flex flex-col items-center bg-zinc-900 text-zinc-50'>
+  <footer className='flex flex-col items-center bg-slate-900 text-zinc-50'>
     <div className='flex flex-wrap items-start gap-10 justify-around p-4 w-full'>
       <FooterSection 
         title='Información'
@@ -13,7 +13,7 @@ export const Footer = () => (
         enseñanza-aprendizaje, investigación científica y tecnológica e interacción social universitaria.'
       />
 
-      <FooterSection 
+      <FooterSection
         title='Sobre el vivero'
         content='En los viveros se mantienen condiciones especiales en lo que respecta a la intensidad de luz solar 
         que incide sobre la planta, manteniendo un mínimo de ésta. Una vez que la plántula se ha desarrollado 

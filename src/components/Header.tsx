@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Navbar } from './Navbar';
 
 export const Header = () => (
-  <header className='bg-white border-gray-200 dark:bg-gray-900 w-full flex justify-between items-center px-12 py-4'>
+  <header className='bg-white border-gray-200 dark:bg-gray-900 w-full flex justify-between items-center px-12 py-6'>
     <Logo />
     <Navbar />
     <NavLink to="#">

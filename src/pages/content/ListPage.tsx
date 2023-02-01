@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { fetchAllIdentification } from '../../services';
-import { IdentificationResponseDTO } from '../../types';
+import { IdentificationResponseDTO, Status } from '../../types';
 
 export const ListPage = () => {
 
@@ -8,11 +8,11 @@ export const ListPage = () => {
 
 	useEffect(() => {
 		fetchAllIdentification()
-		.then((i: Array<IdentificationResponseDTO>) => setIdentifications(i))
+		.then((data: Array<IdentificationResponseDTO>) => setIdentifications(data))
 	}, [identifications])
 
   return (
-    <section className='bg-gray-400 h-screen'>
+    <section className='bg-gray-400'>
       <div className='relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center p-5'>
 				<Table identifications={identifications} />
       </div>
@@ -71,14 +71,17 @@ interface TableRowItemProps {
 }
 
 const TableRowItem = ({ identification }: TableRowItemProps) => {
-	const style = 'px-6 py-4 text-white font-medium';
+	const style = 'text-slate-300 px-6 py-4 text-white font-medium';
 	return (
-		<tr className='bg-white border-b border-gray-700 [&:nth-child(even)]:dark:bg-gray-800 [&:nth-child(odd)]:dark:bg-gray-900'>
+		<tr className='bg-white border-b border-gray-700 [&:nth-child(even)]:dark:bg-gray-800 [&:nth-child(even)]:dark:hover:bg-gray-600 dark:bg-gray-900 dark:hover:bg-gray-600'>
 			<td className={style}>{identification.id}</td>
 			<td className={`${style} first-letter:uppercase`}>{identification.commonName}</td>
 			<td className={`${style} first-letter:uppercase`}><i>{identification.scientificName} {identification.firstLetterLastname?.toUpperCase()}</i></td>
 			<td className={`${style} first-letter:uppercase`}>{identification.family}</td>
-			<td className={`${style} uppercase`} >{identification.status}</td>
+			<td className={`${style} uppercase`} >{statusToSpanish(identification.status)}</td>
 		</tr>	
 	)
 }
+
+
+const statusToSpanish = (status: Status) => status === 'IN_CONSERVATION' ?  'EN CONSERVACION' : status === 'AVAILABLE' ? 'DISPONIBLE' : 'NO EXISTENTE';

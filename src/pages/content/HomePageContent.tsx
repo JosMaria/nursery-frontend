@@ -20,7 +20,7 @@ export const HomePageContent = () => {
   const prevPage = () => setPage(prev => prev - 1);
 
   return (
-    <section className='bg-gray-400 h-screen w-full flex flex-col justify-between'>
+    <section className='bg-gray-400 w-full flex flex-col justify-between'>
       <ClassificationNavbar />
       <ContentProducts products={products} />
       <SectionPageButton page={page} productsLength={products.length} prevPage={prevPage} nextPage={nextPage} />
