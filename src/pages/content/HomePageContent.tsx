@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Product } from '../../components'
-import { ClassificationNavbar } from '../../components/ClassificationNavbar';
+import { useEffect, useState } from 'react';
+import { Product, ClassificationNavbar } from '../../components'
 import { fetchAllProducts } from '../../services';
 import { ProductResponseDTO } from '../../types';
 
@@ -24,27 +23,34 @@ export const HomePageContent = () => {
   const prevPage = () => setPage(prev => prev - 1);
 
   return (
-    <section className='content-container'>
+    <section className='bg-gray-400 flex flex-col justify-between'>
       <ClassificationNavbar />
-      <section className='home-page-content'>
-        {
-          products.map(product => 
-            <Product
-              key={product.id}
-              id={product.id}
-              commonName={product.commonName}
-              scientificName={product.scientificName}
-              firstLetterLastname={product.firstLetterLastname}
-              family={product.family}
-              status={product.status}
-            />
-          )  
-        }
-      </section>
+      <ContentProducts products={products} />
       <SectionPageButton page={page} productsLength={products.length} prevPage={prevPage} nextPage={nextPage} />
     </section>
   )
 }
+
+interface ContentProductsProps {
+  products: Array<ProductResponseDTO>
+}
+
+const ContentProducts = ({ products }: ContentProductsProps) => (
+  <section className='flex flex-wrap justify-evenly gap-10 p-8'>
+    {
+      products.map(product => 
+      <Product
+        key={product.id}
+        id={product.id}
+        commonName={product.commonName}
+        scientificName={product.scientificName}
+        firstLetterLastname={product.firstLetterLastname}
+        family={product.family}
+        status={product.status}
+      />)
+    }
+  </section>
+)
 
 interface SectionPageButtonProps {
   page: number,
