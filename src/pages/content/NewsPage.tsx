@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const NewsPage = () => {
   return (
-    <div className='flex flex-col gap-7 items-center bg-gray-400 w-full p-5'>
+    <div className='flex flex-col gap-7 items-center bg-gray-400 w-full h-screen p-5'>
       {/* <Alert message='A simple info alert with an. Give it a click if you like.' /> */}
       {
         myNews.map(news => 

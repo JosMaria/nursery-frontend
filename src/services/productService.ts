@@ -1,4 +1,5 @@
 import axios from "axios"
+import { IdentificationResponseDTO } from "../types";
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080'
@@ -19,5 +20,10 @@ export const fetchAllProductsByClassification = async (numberPage = 0, classific
       page: numberPage
     }
   });
+  return data;
+}
+
+export const fetchAllIdentification = async () => {
+  const { data } = await instance.get(`/api/nursery/identifications`);
   return data;
 }

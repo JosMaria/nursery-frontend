@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import { Product, ClassificationNavbar } from '../../components'
 import { fetchAllProducts } from '../../services';
 import { ProductResponseDTO } from '../../types';
-
-import './stylesheets/HomePageContent.css'
-
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 
 const totalProductsByPage = 12;
@@ -23,7 +20,7 @@ export const HomePageContent = () => {
   const prevPage = () => setPage(prev => prev - 1);
 
   return (
-    <section className='bg-gray-400 flex flex-col justify-between'>
+    <section className='bg-gray-400 h-screen w-full flex flex-col justify-between'>
       <ClassificationNavbar />
       <ContentProducts products={products} />
       <SectionPageButton page={page} productsLength={products.length} prevPage={prevPage} nextPage={nextPage} />
