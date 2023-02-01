@@ -3,5 +3,5 @@ export interface NewsResponseDTO {
   title: string;
   contentToShow: string;
   content: string;
-  urlImage?: string;
+  urlImage: string | null;
 }

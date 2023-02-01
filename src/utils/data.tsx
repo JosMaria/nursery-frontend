@@ -22,8 +22,10 @@ export const news: NewsResponseDTO[] = [
   },
   {
     id: 2,
-    title: 'Poemas',
-    contentToShow: 'Tienes algo que me encanta, que me hace vibrar, que me llena el corazón de alegría y una felicidad inmensa',
+    title: 'Esta es la novedad numero 2',
+    contentToShow: 'esta es el contenido que se va ver en la' + 
+    'descripcion visible, esta es el contenido que se va ver en la descripcion visible, esta es el contenido que se' + 
+    'va ver en la descripcion visible esta es el contenido que se va ver en la descripcion visible',
     content: 'te veo poco, pero te pienso mucho Cada vez que intento evadirme de ti dejando de verte, a los segundos invades mi mente.' +
               'Una mirada tuya basta para hacerme sonreír, enamorarme, ilusionarme, destrozarme,' + 
               'Me di cuenta de que me había enamorado de ti cuando entendí que mi canción preferida eran tus palabras,' + 
@@ -33,11 +35,12 @@ export const news: NewsResponseDTO[] = [
               'por ti merece la pena esperar' + 
               'Cada vez que te miro a los ojos más seguro estoy de lo que siento' +
               '¿A ti también te pasa? ¿Sentir mariposas cuando ves a la persona amada?' + 
-              'Conocerte no estaba dentro de mis planes, ¡pero cuán maravilloso que me ha parecido que esos planes cambien!'
+              'Conocerte no estaba dentro de mis planes, ¡pero cuán maravilloso que me ha parecido que esos planes cambien!',
+    urlImage: null
   },
   {
     id: 3,
-    title: 'Poemas',
+    title: 'esta es el contenido que se va ver en la',
     contentToShow: 'Me di cuenta de que me había enamorado de ti cuando entendí que mi canción preferida eran tus palabras',
     content: 'te veo poco, pero te pienso mucho Cada vez que intento evadirme de ti dejando de verte, a los segundos invades mi mente.' +
               'Una mirada tuya basta para hacerme sonreír, enamorarme, ilusionarme, destrozarme,' + 
@@ -48,12 +51,15 @@ export const news: NewsResponseDTO[] = [
               'por ti merece la pena esperar' + 
               'Cada vez que te miro a los ojos más seguro estoy de lo que siento' +
               '¿A ti también te pasa? ¿Sentir mariposas cuando ves a la persona amada?' + 
-              'Conocerte no estaba dentro de mis planes, ¡pero cuán maravilloso que me ha parecido que esos planes cambien!'
+              'Conocerte no estaba dentro de mis planes, ¡pero cuán maravilloso que me ha parecido que esos planes cambien!',
+    urlImage: null
   },
   {
     id: 4,
-    title: 'Poemas',
-    contentToShow: '¿A ti también te pasa? ¿Sentir mariposas cuando ves a la persona amada?',
+    title: 'Titulo numero 4',
+    contentToShow: 'esta es el contenido que se va ver en la' + 
+    'descripcion visible, esta es el contenido que se va ver en la descripcion visible, esta es el contenido que se' + 
+    'va ver en la descripcion visible esta es el contenido que se va ver en la descripcion visible',
     content: 'te veo poco, pero te pienso mucho Cada vez que intento evadirme de ti dejando de verte, a los segundos invades mi mente.' +
               'Una mirada tuya basta para hacerme sonreír, enamorarme, ilusionarme, destrozarme,' + 
               'Me di cuenta de que me había enamorado de ti cuando entendí que mi canción preferida eran tus palabras,' + 
@@ -69,7 +75,9 @@ export const news: NewsResponseDTO[] = [
   {
     id: 5,
     title: 'por ti merece la pena esperar, lo que quiero decir es que te ',
-    contentToShow: 'te veo poco, pero te pienso mucho',
+    contentToShow: 'te veo poco, pero te pienso mucho Cada vez que intento evadirme de ti dejando de verte, a los segundos invades mi mente.' +
+    'Una mirada tuya basta para hacerme sonreír, enamorarme, ilusionarme, destrozarme,' + 
+    'Me di cuenta de que me había enamorado de',
     content: 'te veo poco, pero te pienso mucho Cada vez que intento evadirme de ti dejando de verte, a los segundos invades mi mente.' +
               'Una mirada tuya basta para hacerme sonreír, enamorarme, ilusionarme, destrozarme,' + 
               'Me di cuenta de que me había enamorado de ti cuando entendí que mi canción preferida eran tus palabras,' + 
