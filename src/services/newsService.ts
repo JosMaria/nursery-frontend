@@ -9,3 +9,8 @@ export const fetchAllNews = async (): Promise<Array<NewsResponseDTO>> => {
     const { data } = await instance.get(`/api/v1/news`);
     return data;
 }
+
+export const fetchNewsById = async (newsId: string): Promise<NewsResponseDTO> => {
+    const { data } = await instance.get(`/api/v1/news/${newsId}`);
+    return data;
+}
