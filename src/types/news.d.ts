@@ -1,7 +1,6 @@
 export interface NewsResponseDTO {
   id: number;
+  urlImage: string;
   title: string;
-  contentToShow: string;
-  content: string;
-  urlImage: string | null;
+  description: string;
 }
