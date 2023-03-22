@@ -6,7 +6,7 @@ const instance = axios.create({
 })
 
 export const fetchAllProducts = async (numberPage = 0) => {
-  const { data } = await instance.get('/api/nursery/products', { 
+  const { data } = await instance.get('/api/v1/nursery/products', { 
     params: { 
       page: numberPage 
     }
