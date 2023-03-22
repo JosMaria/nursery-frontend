@@ -12,9 +12,8 @@ export const AppRoute = () => (
         <Route index element={<HomePageContent />} />
         <Route path='list' element={<ListPage />} />
         
-        <Route path='news' element={<NewsPage />}>
-          <Route path=':newsId' element={<News />} />
-        </Route>
+        <Route path='news' element={<NewsPage />} />
+        <Route path='news/:newsId' element={<News />} />
       </Route>
     </Routes>
   </BrowserRouter>
