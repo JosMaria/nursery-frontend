@@ -1,18 +1,24 @@
-export const ClassificationNavbar = () => (
-  <nav className='flex justify-evenly dark:bg-gray-800 text-gray-100 w-full'>
-    {
-      ['Todos', 'Ornamental', 'Forestal', 'Industrial', 'Alimenticia', 'Medicinal', 'Exotica', 'Cactu', 'Frutal', 'Crasa', 'Suculenta']
-        .map((item, index) => <NavbarItemClassification key={index} text={item} />)
-    }
-  </nav>
-)
+import { useEffect, useState } from 'react'
+import { fetchAllClassificationsByUtility } from '../services/newsService';
+import { Classification } from '../types';
 
-interface NavbarItemClassificationProps {
-  text: string
+export const ClassificationNavbar = () => {
+	const [classificationsByUtility, setClassificationsByUtility] = useState<Array<Classification>>();
+
+	useEffect(() => {
+		fetchAllClassificationsByUtility()
+			.then(classifications => setClassificationsByUtility(classifications));
+	}, [])
+
+	return (
+		<nav className='flex justify-evenly dark:bg-gray-800 text-gray-100 w-full'>
+			{
+				classificationsByUtility?.map((value, index) => 
+					<div key={index} className='px-5 py-4 text-sm font-medium hover:text-blue-600 hover:cursor-pointer capitalize'>
+						{value}
+					</div>
+				)
+			}
+		</nav>
+	)
 }
-
-const NavbarItemClassification = ({ text }: NavbarItemClassificationProps) => (
-  <div className='px-5 py-4 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>
-    {text}
-  </div>
-)
