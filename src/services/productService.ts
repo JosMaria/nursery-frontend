@@ -6,12 +6,12 @@ const instance = axios.create({
 })
 
 export const fetchAllProducts = async (numberPage = 0) => {
-  const { data } = await instance.get('/api/v1/nursery/products', { 
-    params: { 
-      page: numberPage 
+  const { data } = await instance.get('/api/v1/nursery/products', {
+    params: {
+      page: numberPage
     }
   });
-  return data;  
+  return data;
 }
 
 export const fetchAllProductsByClassification = async (numberPage = 0, classification: string) => {
@@ -23,7 +23,7 @@ export const fetchAllProductsByClassification = async (numberPage = 0, classific
   return data;
 }
 
-export const fetchAllIdentification = async () => {
-  const { data } = await instance.get(`/api/nursery/identifications`);
+export const fetchAllIdentification = async (): Promise<Array<IdentificationResponseDTO>> => {
+  const { data } = await instance.get(`/api/v1/plants/identifications`);
   return data;
 }
