@@ -37,7 +37,6 @@ export const HomePageContent = () => {
         setProductsByClassification={setProductsByClassification}
       />
       {products && <ContentProducts products={products} />}
-      {/* <SectionPageButton page={page} productsLength={products.length} prevPage={prevPage} nextPage={nextPage} /> */}
 
       <div className='flex gap-5 justify-center p-5'>
         <button
