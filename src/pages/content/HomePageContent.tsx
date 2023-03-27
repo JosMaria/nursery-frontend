@@ -44,6 +44,7 @@ const ContentProducts = ({ products }: ContentProductsProps) => (
         firstLetterLastname={product.firstLetterLastname}
         family={product.family}
         status={product.status}
+        urlPicture={product.urlPicture}
       />)
     }
   </section>
