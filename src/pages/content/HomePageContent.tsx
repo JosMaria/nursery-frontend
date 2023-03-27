@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Product, ClassificationNavbar } from '../../components'
-import { fetchAllProducts } from '../../services';
+import { fetchAllProducts, fetchAllProductsByClassification } from '../../services';
 import { ProductResponseDTO } from '../../types';
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
+import { fetchAllClassificationsByUtility } from '../../services/newsService';
 
 const totalProductsByPage = 12;
 const FIRST_PAGE = 0;
@@ -20,13 +21,25 @@ export const HomePageContent = () => {
       .then(data => setProducts(data));
   }, [page])
 
+  const setProductByDefault = () => {
+    fetchAllProducts().then(data => setProducts(data));
+  }
+
+  const setProductsByClassification = (classification: string) => {
+    fetchAllProductsByClassification(classification)
+      .then(response => setProducts(response));
+  }
+
   const nextPage = () => setPage(prevPage => prevPage + 1);
   const prevPage = () => setPage(prevPage => prevPage - 1);
 
   return (
     <section className='bg-gray-400 w-full flex flex-col justify-between black'>
-      <ClassificationNavbar />
-      { products && <ContentProducts products={products} /> }
+      <ClassificationNavbar
+        setProductByDefault={setProductByDefault}
+        setProductsByClassification={setProductsByClassification}
+      />
+      {products && <ContentProducts products={products} />}
       {/* <SectionPageButton page={page} productsLength={products.length} prevPage={prevPage} nextPage={nextPage} /> */}
 
       <div className='flex gap-5 justify-center p-5'>

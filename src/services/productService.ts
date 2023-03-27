@@ -19,12 +19,8 @@ export const fetchProductById = async (id: string): Promise<SingleProductRespons
   return data;
 };
 
-export const fetchAllProductsByClassification = async (numberPage = 0, classification: string) => {
-  const { data } = await instance.get(`/api/nursery/products/classifications/${classification}`, {
-    params: {
-      page: numberPage
-    }
-  });
+export const fetchAllProductsByClassification = async (classification: string) => {
+  const { data } = await instance.get(`/api/v1/plants/types/${classification}`);
   return data;
 }
 
