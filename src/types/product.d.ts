@@ -1,6 +1,6 @@
 export type Status = 'IN_CONSERVATION' | 'AVAILABLE' | 'NON_EXISTENT';
 export type Classification = 'cactu' | 'crasa' | 'exotica' | 'frutal' | 'forestal' |
-	'alimenticia' | 'industrial' | 'medicinal' | 'ornamental' | 'suculental';
+	'alimenticia' | 'industrial' | 'medicinal' | 'ornamental' | 'suculental' | 'todo';
 
 export interface IdentificationResponseDTO {
 	id: number,

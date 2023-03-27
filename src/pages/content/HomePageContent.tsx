@@ -5,25 +5,44 @@ import { ProductResponseDTO } from '../../types';
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 
 const totalProductsByPage = 12;
+const FIRST_PAGE = 0;
+
+const styleButtonPage = 'gap-1 text-lg font-medium bg-slate-300 hover:bg-slate-400 text-gray-900 p-4 rounded-xl';
+const styleButtonPageDisabled = 'gap-1 text-lg font-medium bg-slate-500  p-4 rounded-xl';
 
 export const HomePageContent = () => {
-  
-  const [products, setProducts] = useState(Array<ProductResponseDTO>);
-  const[page, setPage] = useState(1)
-  
+
+  const [products, setProducts] = useState<Array<ProductResponseDTO>>();
+  const [page, setPage] = useState(FIRST_PAGE);
+
   useEffect(() => {
     fetchAllProducts(page)
       .then(data => setProducts(data));
   }, [page])
-  
-  const nextPage = () => setPage(prev => prev + 1);
-  const prevPage = () => setPage(prev => prev - 1);
+
+  const nextPage = () => setPage(prevPage => prevPage + 1);
+  const prevPage = () => setPage(prevPage => prevPage - 1);
 
   return (
-    <section className='bg-gray-400 w-full flex flex-col justify-between'>
+    <section className='bg-gray-400 w-full flex flex-col justify-between black'>
       <ClassificationNavbar />
-      <ContentProducts products={products} />
-      <SectionPageButton page={page} productsLength={products.length} prevPage={prevPage} nextPage={nextPage} />
+      { products && <ContentProducts products={products} /> }
+      {/* <SectionPageButton page={page} productsLength={products.length} prevPage={prevPage} nextPage={nextPage} /> */}
+
+      <div className='flex gap-5 justify-center p-5'>
+        <button
+          className={page === FIRST_PAGE ? styleButtonPageDisabled : styleButtonPage}
+          disabled={page === FIRST_PAGE}
+          onClick={prevPage}>
+          Anterior
+        </button>
+        <button
+          className={products?.length === 0 ? styleButtonPageDisabled : styleButtonPage}
+          disabled={products?.length === 0}
+          onClick={nextPage}>
+          Siguiente
+        </button>
+      </div>
     </section>
   )
 }
@@ -35,17 +54,17 @@ interface ContentProductsProps {
 const ContentProducts = ({ products }: ContentProductsProps) => (
   <section className='flex flex-wrap justify-evenly gap-10 p-8'>
     {
-      products.map(product => 
-      <Product
-        key={product.id}
-        id={product.id}
-        commonName={product.commonName}
-        scientificName={product.scientificName}
-        firstLetterLastname={product.firstLetterLastname}
-        family={product.family}
-        status={product.status}
-        urlPicture={product.urlPicture}
-      />)
+      products.map(product =>
+        <Product
+          key={product.id}
+          id={product.id}
+          commonName={product.commonName}
+          scientificName={product.scientificName}
+          firstLetterLastname={product.firstLetterLastname}
+          family={product.family}
+          status={product.status}
+          urlPicture={product.urlPicture}
+        />)
     }
   </section>
 )
@@ -59,16 +78,16 @@ interface SectionPageButtonProps {
 
 const SectionPageButton = ({ page, productsLength, prevPage, nextPage }: SectionPageButtonProps) => (
   <section className='flex gap-10 justify-center p-7 w-full'>
-    <PageButton 
+    <PageButton
       changePage={prevPage}
-      disabled={page === 0}
+      disabled={page < 0}
       icon={<GrFormPreviousLink size='1.4em' />}
       reverse={true}
       text='Anterior'
     />
-    <PageButton 
+    <PageButton
       changePage={nextPage}
-      disabled={productsLength < totalProductsByPage}
+      disabled={productsLength === 0}
       icon={<GrFormNextLink size='1.4em' />}
       reverse={false}
       text='Siguiente'
