@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { SingleProduct } from '../components/SingleProduct';
 import { HomePageContent } from '../pages/content/HomePageContent'
 import { ListPage } from '../pages/content/ListPage';
 import { News } from '../pages/content/News';
@@ -10,8 +11,8 @@ export const AppRoute = () => (
     <Routes>
       <Route path='/' element={<Page />}>
         <Route index element={<HomePageContent />} />
+        <Route path='products/:productId' element={<SingleProduct />} />
         <Route path='list' element={<ListPage />} />
-        
         <Route path='news' element={<NewsPage />} />
         <Route path='news/:newsId' element={<News />} />
       </Route>

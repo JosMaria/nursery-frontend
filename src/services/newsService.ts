@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NewsResponseDTO} from '../types';
+import { Classification, NewsResponseDTO} from '../types';
 
 const instance = axios.create({
     baseURL: 'http://localhost:8080'
@@ -13,4 +13,10 @@ export const fetchAllNews = async (): Promise<Array<NewsResponseDTO>> => {
 export const fetchNewsById = async (newsId: string): Promise<NewsResponseDTO> => {
     const { data } = await instance.get(`/api/v1/news/${newsId}`);
     return data;
+}
+
+export const fetchAllClassificationsByUtility = async () : Promise<Array<Classification>> => {
+    const { data } = await instance.get('/api/v1/classifications');
+    const classifications = data as Array<Classification>
+    return ['todo', ...classifications];
 }
