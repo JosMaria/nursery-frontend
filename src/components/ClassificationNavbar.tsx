@@ -26,6 +26,8 @@ export const ClassificationNavbar = ({ setProductByDefault, setProductsByClassif
 
 	const changeClassification = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		const newClassificationActual = e.currentTarget?.textContent?.toLowerCase() as Classification;
+		
+		
 		setClassificationActual(newClassificationActual);
 	}
 

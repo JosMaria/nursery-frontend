@@ -9,7 +9,7 @@ export const ListPage = () => {
 	useEffect(() => {
 		fetchAllIdentification()
 			.then((data: Array<IdentificationResponseDTO>) => setIdentifications(data))
-	}, [identifications])
+	}, [])
 
 	return (
 		<section className='bg-gray-400'>
