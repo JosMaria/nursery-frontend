@@ -18,7 +18,7 @@ export const Form = () => {
   return (
     <section className='bg-violet-900 flex justify-center center'>
       <form
-        className='w-1/4 p-5 m-5 bg-slate-600 flex flex-col justify-center items-center gap-y-5'
+        className='w-1/4 p-5 m-5 bg-slate-600 flex flex-col justify-start items-center gap-y-5'
         onSubmit={handleSubmit(clickSubmit)}>
         <h1 className='text-2xl dark:text-white font-semibold'>CREAR PLANTA</h1>
 
@@ -95,19 +95,19 @@ export const Form = () => {
           </select>
         </div>
         
-        <div>
-          <label>Clasificaciones</label>
+        <div className="flex flex-col w-full">
+          <label className={STYLE_LABEL}>Clasificaciones</label>
           {
             classifications.map((value, index) => 
-              <div key={index}>
-                <input type='checkbox' id={value} value={value} {...register('classifications')} />
-                <label htmlFor={value}>{value}</label>
+              <div key={index} className='w-full p-3 text-sm font-medium text-gray-900 bg-white dark:bg-gray-700 dark:text-white'>
+                <input className="mr-3" type='checkbox' id={value} value={value} {...register('classifications')} />
+                <label className="text-sm font-medium text-gray-900 dark:text-gray-300" htmlFor={value}>{value}</label>
               </div>
             )
           }
         </div>
         
-        <button type='submit' className='text-white font-semibold bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+        <button type='submit' className='w-1/2 text-white font-semibold bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
           Crear planta
         </button>
       </form>
