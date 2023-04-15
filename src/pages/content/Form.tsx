@@ -1,28 +1,23 @@
 import { FieldValues, useForm } from "react-hook-form";
-import { Status, Classification } from '../../types/product'
+import { createPlant } from "../../services";
+import { Status, Classification, CreatePlantDTO } from '../../types/product'
 
 const STYLE_LABEL = 'pb-2 pl-2 text-sm font-semibold text-gray-900 dark:text-white'
 
 // TODO: delete this data
-const options = ['familia 1', 'familia 2', 'familia 3', 'familia 4', 'familia 5', 'familia 6']
-const states: Array<StatusSpanish> = ['DISPONIBLE', 'CONSERVACION', 'NO EXISTENTE']
-const classifications: Array<Classification> = ['cactus', 'crasa', 'exotica', 'frutal', 'forestal', 'alimenticia', 'industrial', 'medicinal', 'ornamental', 'suculental']
-
-interface IFormInput {
-  commonName: string;
-  scientificName: string;
-  firstLetterLastname: string;
-  family: string;
-  status: string;
-  classifications: Array<string>;
-}
+const options = ['euphorbiaceae', 'fabaceae', 'asparagaceae', 'solanaceae']
+const states: Array<Status> = ['AVAILABLE', 'IN_CONSERVATION','NON_EXISTENT']
+const classifications: Array<Classification> = ['ORNAMENTAL', 'FOREST', 'INDUSTRIAL', 'ALIMENTARY', 'MEDICINAL', 'EXOTIC',
+  'CACTUS', 'FRUITFUL', 'GRASS', 'SUCCULENT'];
 
 export const Form = () => {
 
-  const { register, handleSubmit } = useForm<IFormInput>();
+  const { register, handleSubmit, reset } = useForm<CreatePlantDTO>();
 
-  const clickSubmit = (values: FieldValues) => {
-    console.log('values: ', values)
+  const clickSubmit = (payload: CreatePlantDTO) => {
+    createPlant(payload);
+    alert('Planta creada');
+    reset()
   }
 
   return (
@@ -31,7 +26,6 @@ export const Form = () => {
         className='w-1/4 p-5 m-5 bg-slate-600 flex flex-col justify-start items-center gap-y-5'
         onSubmit={handleSubmit(clickSubmit)}>
         <h1 className='text-2xl dark:text-white font-semibold'>CREAR PLANTA</h1>
-
         <div className='flex flex-col w-full'>
           <label htmlFor='commonName' className={STYLE_LABEL}>
             Nombre Com&uacute;n
@@ -98,7 +92,7 @@ export const Form = () => {
                 <option
                   className='p-3'
                   key={index}
-                  value={traslateStatus(optionItem)}>
+                  value={optionItem}>
                   {optionItem}
                 </option>)
             }

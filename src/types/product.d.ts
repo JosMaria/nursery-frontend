@@ -1,6 +1,9 @@
 export type Status = 'IN_CONSERVATION' | 'AVAILABLE' | 'NON_EXISTENT';
-export type Classification = 'cactus' | 'crasa' | 'exotica' | 'frutal' | 'forestal' |
-	'alimenticia' | 'industrial' | 'medicinal' | 'ornamental' | 'suculental' | 'todo';
+export type Classification = 'ORNAMENTAL' | 'FOREST' | 'INDUSTRIAL' | 'ALIMENTARY' | 'MEDICINAL' | 'EXOTIC' |
+'CACTUS' | 'FRUITFUL' | 'GRASS' | 'SUCCULENT';
+
+export type ClassificationType = 'cactus' | 'gross' | 'exotic' | 'fruit' | 'forest' |
+'food' | 'industrial' | 'medicinal' | 'ornamental' | 'succulent' | 'all';
 
 export interface IdentificationResponseDTO {
 	id: number,
@@ -16,4 +19,13 @@ export interface ProductResponseDTO extends IdentificationResponseDTO {
 }
 export interface SingleProductResponseDTO extends IdentificationResponseDTO {
 	urlPicture: Array<string>
+}
+
+export interface CreatePlantDTO {
+  commonName: string;
+  scientificName: string;
+  firstLetterLastname: string;
+  family: string;
+  status: string;
+  classifications: Array<string>;
 }
