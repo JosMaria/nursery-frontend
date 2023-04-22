@@ -1,18 +1,29 @@
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { createPlant } from "../../services";
+import { fetchAllFamilies } from "../../services/newsService";
 import { Status, Classification, CreatePlantDTO } from '../../types/product'
 
 const STYLE_LABEL = 'pb-2 pl-2 text-sm font-semibold text-gray-900 dark:text-white'
 
 // TODO: delete this data
-const options = ['euphorbiaceae', 'fabaceae', 'asparagaceae', 'solanaceae']
 const states: Array<Status> = ['AVAILABLE', 'IN_CONSERVATION','NON_EXISTENT']
-const classifications: Array<Classification> = ['ORNAMENTAL', 'FOREST', 'INDUSTRIAL', 'ALIMENTARY', 'MEDICINAL', 'EXOTIC',
-  'CACTUS', 'FRUITFUL', 'GRASS', 'SUCCULENT'];
+
+type ClassificationSpanish = 'ornamental' | 'forestal' | 'industrial' | 'alimenticia' | 'medicinal' | 'exotica' |
+'cactus' | 'frutal' | 'crasa' | 'suculenta' | 'todo';
+
+const classifications: Array<Classification> = 
+  ['ORNAMENTAL', 'FOREST', 'INDUSTRIAL', 'ALIMENTARY', 'MEDICINAL', 'EXOTIC', 'CACTUS', 'FRUITFUL', 'GRASS', 'SUCCULENT'];
 
 export const Form = () => {
 
   const { register, handleSubmit, reset } = useForm<CreatePlantDTO>();
+  const [families, setFamilies] = useState<Array<string>>([]);
+
+  useEffect(() => {
+    fetchAllFamilies()
+      .then(familiesObtained => setFamilies(familiesObtained));
+  }, [])
 
   const clickSubmit = (payload: CreatePlantDTO) => {
     createPlant(payload);
@@ -68,7 +79,7 @@ export const Form = () => {
             id='family'
             {...register('family')}>
             {
-              options.map((optionItem, index) =>
+              families.map((optionItem, index) =>
                 <option
                   className='p-3'
                   key={index}
@@ -93,7 +104,7 @@ export const Form = () => {
                   className='p-3'
                   key={index}
                   value={optionItem}>
-                  {optionItem}
+                  {traslateStatus(optionItem)}
                 </option>)
             }
           </select>
@@ -107,7 +118,9 @@ export const Form = () => {
               classifications.map((value, index) => 
                 <div key={index} className='p-3 text-gray-900 bg-white dark:bg-gray-700 dark:text-white'>
                   <input className="mr-2" type='checkbox' id={value} value={value} {...register('classifications')} />
-                  <label className="text-sm font-medium text-gray-900 dark:text-gray-300" htmlFor={value}>{value}</label>
+                  <label className="text-sm font-medium text-gray-900 dark:text-gray-300" htmlFor={value}>
+                    {translateToSpanish(value)}
+                  </label>
                 </div>
               )
             }  
@@ -128,13 +141,36 @@ export const Form = () => {
 // NOTE: all dtos in english
 type StatusSpanish = 'DISPONIBLE' | 'CONSERVACION' | 'NO EXISTENTE';
 
-
-const traslateStatus = (state: StatusSpanish): Status => {
-  if (state === 'DISPONIBLE') {
-    return 'AVAILABLE';
-  } else if (state === "CONSERVACION") {
-    return 'IN_CONSERVATION';
+const traslateStatus = (state: Status): StatusSpanish => {
+  if (state === 'AVAILABLE') {
+    return 'DISPONIBLE';
+  } else if (state === "IN_CONSERVATION") {
+    return 'CONSERVACION';
   } else {
-    return 'NON_EXISTENT';
+    return 'NO EXISTENTE';
+  }
+}
+
+const translateToSpanish = (classification: Classification): ClassificationSpanish => {
+  if (classification === 'ORNAMENTAL') {
+      return  'ornamental';
+  } else if (classification === 'FOREST') {
+      return 'forestal';
+  } else if (classification === 'INDUSTRIAL') {
+      return 'industrial';
+  } else if (classification === 'ALIMENTARY') {
+      return 'alimenticia';
+  } else if (classification === 'MEDICINAL') {
+      return 'medicinal';
+  } else if (classification === 'EXOTIC') {
+      return 'exotica';
+  } else if (classification === 'CACTUS') {
+      return 'cactus';
+  } else if (classification === 'FRUITFUL') {
+      return 'frutal';
+  } else if (classification === 'GRASS') {
+      return 'crasa';
+  } else {
+      return 'suculenta';
   }
 }

@@ -18,5 +18,9 @@ export const fetchNewsById = async (newsId: string): Promise<NewsResponseDTO> =>
 export const fetchAllClassificationsByUtility = async () : Promise<Array<Classification>> => {
     const { data } = await instance.get('/api/v1/classifications');
     const classifications = data as Array<Classification>
-    return ['todo', ...classifications];
+    return classifications;  
+}
+
+export const fetchAllFamilies = async (): Promise<Array<string>> => {
+    return ['euphorbiaceae', 'fabaceae', 'asparagaceae', 'solanaceae', 'lamiaceae'];
 }
