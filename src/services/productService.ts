@@ -36,7 +36,7 @@ export const fetchByIdProduct = async (productId: number): Promise<ProductRespon
  * @param numberPage contains the number of the page.
  * @returns { Promise<Array<import('../types').ProductResponseDTO>> } all products by classification.
  */
-export const fetchByClassificationProduct = async (classification: Classification, numberPage: number): Promise<Array<ProductResponseDTO>> => {
+export const fetchByClassificationProduct = async (classification: Classification, numberPage = 0): Promise<Array<ProductResponseDTO>> => {
   const { data } = await productService.get(`/classifications/${classification}`, {
     params: {
       page: numberPage
@@ -50,7 +50,7 @@ export const fetchByClassificationProduct = async (classification: Classificatio
  * @param numberPage contains the number of the page.
  * @returns { Promise<Array<import('../types').ItemToList>> } all item to list.
  */
-export const fetchAllItemToList = async (numberPage: number): Promise<Array<ItemToList>> => {
+export const fetchAllItemsToList = async (numberPage = 0): Promise<Array<ItemToList>> => {
   const { data } = await productService.get(`/identifications`, {
     params: {
       page: numberPage 
@@ -65,7 +65,7 @@ export const fetchAllItemToList = async (numberPage: number): Promise<Array<Item
  * @param numberPage contains the number of the page.
  * @returns { Promise<Array<import('../types').ItemToList>> } all item to lis by statust.
  */
-export const fetchAllItemToListByStatus = async (status: Status, numberPage: number): Promise<Array<ItemToList>> => {
+export const fetchAllItemsToListByStatus = async (status: Status, numberPage = 0): Promise<Array<ItemToList>> => {
   const { data } = await productService.get(`/identifications/status/${status}`, {
     params: {
       page: numberPage 
