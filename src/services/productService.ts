@@ -1,5 +1,5 @@
 import { ProductResponseDTO, Classification, ItemToList, Status } from '../types/dto'
-import { createInstance } from "./http";
+import { createInstance } from './http';
 
 /**
  * Axios instance that will allow requests to be made to the API related to the News.
