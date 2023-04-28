@@ -1,4 +1,4 @@
-import { ProductResponseDTO, Classification, ItemToList, Status } from '../types/dto'
+import { ProductResponseDTO, Classification, ItemToList, Status } from '../types'
 import { createInstance } from './http';
 
 /**
@@ -9,7 +9,7 @@ const productService = createInstance({ instanceURL: '/products' });
 /**
  * Function that allows you to fetch all products.
  * @param numberPage contains the number of the page.
- * @returns { Promise<Array<import('../types/dto').ProductResponseDTO>> } all products.
+ * @returns { Promise<Array<import('../types').ProductResponseDTO>> } all products.
  */
 export const fetchAllProducts = async (numberPage = 0): Promise<Array<ProductResponseDTO>> => {
   const { data } = await productService.get('/', {
@@ -23,7 +23,7 @@ export const fetchAllProducts = async (numberPage = 0): Promise<Array<ProductRes
 /**
  * Function that allows you to fetch product by id.
  * @param productId contains the product's id.
- * @returns { Promise<import('../types/dto').ProductResponseDTO> } product.
+ * @returns { Promise<import('../types').ProductResponseDTO> } product.
  */
 export const fetchByIdProduct = async (productId: number): Promise<ProductResponseDTO> => {
   const { data } = await productService.get(`/${productId}`);
@@ -32,7 +32,7 @@ export const fetchByIdProduct = async (productId: number): Promise<ProductRespon
 
 /**
  * Function that allows you to fetch all products given its classification.
- * @param { import('../types/dto').Classification} classification contains the type of classification.
+ * @param { import('../types').Classification} classification contains the type of classification.
  * @param numberPage contains the number of the page.
  * @returns { Promise<Array<import('../types').ProductResponseDTO>> } all products by classification.
  */
@@ -48,7 +48,7 @@ export const fetchByClassificationProduct = async (classification: Classificatio
 /**
  * Function that allows you to fetch all item to list.
  * @param numberPage contains the number of the page.
- * @returns { Promise<Array<import('../types/dto').ItemToList>> } all item to list.
+ * @returns { Promise<Array<import('../types').ItemToList>> } all item to list.
  */
 export const fetchAllItemToList = async (numberPage: number): Promise<Array<ItemToList>> => {
   const { data } = await productService.get(`/identifications`, {
@@ -61,9 +61,9 @@ export const fetchAllItemToList = async (numberPage: number): Promise<Array<Item
 
 /**
  * Function that allows you to fetch all item to list by status.
- * @param { import('../types/dto').Status} status contains the type of status.
+ * @param { import('../types').Status} status contains the type of status.
  * @param numberPage contains the number of the page.
- * @returns { Promise<Array<import('../types/dto').ItemToList>> } all item to lis by statust.
+ * @returns { Promise<Array<import('../types').ItemToList>> } all item to lis by statust.
  */
 export const fetchAllItemToListByStatus = async (status: Status, numberPage: number): Promise<Array<ItemToList>> => {
   const { data } = await productService.get(`/identifications/status/${status}`, {

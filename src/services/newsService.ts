@@ -1,5 +1,5 @@
 import { createInstance } from './http';
-import { CreateNewsDTO, NewsResponseDTO } from '../types/dto';
+import { CreateNewsDTO, NewsResponseDTO } from '../types';
 
 /**
  * Axios instance that will allow requests to be made to the API related to the News.
@@ -8,8 +8,8 @@ const newsService = createInstance({ instanceURL: '/news' })
 
 /**
  * Function that allows you to create a news.
- * @param { import('../types/dto').CreateNewsDTO } createNewsDTO news to be created.
- * @returns { Promise<import('../types/dto').NewsResponseDTO> } news created by API.
+ * @param { import('../types').CreateNewsDTO } createNewsDTO news to be created.
+ * @returns { Promise<import('../types').NewsResponseDTO> } news created by API.
  */
 export const createNews = async (createNewsDTO: CreateNewsDTO): Promise<NewsResponseDTO> => {
     const { data } = await newsService.post('/', createNewsDTO);
@@ -18,7 +18,7 @@ export const createNews = async (createNewsDTO: CreateNewsDTO): Promise<NewsResp
 
 /**
  * Function that allows you to fetch all news.
- * @returns { Promise<import('../types/dto').NewsResponseDTO> } all news.
+ * @returns { Promise<import('../types').NewsResponseDTO> } all news.
  */
 export const fetchAllNews = async (): Promise<NewsResponseDTO> => {
     const { data } = await newsService.get('/');
@@ -28,7 +28,7 @@ export const fetchAllNews = async (): Promise<NewsResponseDTO> => {
 /**
  * Function that allows you to fetch a news.
  * @param newsId contains the news's id.
- * @returns { Promise<import('../types/dto').NewsResponseDTO> } news by ID.
+ * @returns { Promise<import('../types').NewsResponseDTO> } news by ID.
  */
 export const fetchByIdNews = async (newsId: number): Promise<NewsResponseDTO> => {
     const { data } = await newsService.get(`/${newsId}`);

@@ -1,4 +1,4 @@
-import { Classification } from '../types/dto'
+import { Classification } from '../types'
 import { createInstance } from './http';
 
 /**
@@ -8,7 +8,7 @@ const classificationService = createInstance({ instanceURL: '/classifications' }
 
 /**
  * Function that allows you to fetch all classifications.
- * @returns { Promise<Array<import('../types/dto').Classification>> } all classifications..
+ * @returns { Promise<Array<import('../types').Classification>> } all classifications..
  */
 export const fetchAllClassifications = async (): Promise<Array<Classification>> => {
   const { data } = await classificationService.get('/');

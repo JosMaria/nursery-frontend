@@ -1,5 +1,5 @@
-import { CreatePlantDTO, PlantResponseDTO } from "../types/dto";
-import { createInstance } from "./http";
+import { CreatePlantDTO, PlantResponseDTO } from '../types';
+import { createInstance } from './http';
 
 /**
  * Axios instance that will allow requests to be made to the API related to the News.
@@ -8,8 +8,8 @@ const plantService = createInstance({ instanceURL: '/plants' });
 
 /**
  * Function that allows you to create a plant.
- * @param { import('../types/dto').CreatePlantDTO } createPlantDTO news to be created.
- * @returns { Promise<import('../types/dto').PlantResponseDTO> } news created by API.
+ * @param { import('../types').CreatePlantDTO } createPlantDTO news to be created.
+ * @returns { Promise<import('../types').PlantResponseDTO> } news created by API.
  */
 export const createPlant = async (createPlantDTO: CreatePlantDTO): Promise<PlantResponseDTO> => {
   const { data } = await plantService.post('/', createPlantDTO);
