@@ -1,4 +1,4 @@
-import { ProductResponseDTO } from '../types/dto'
+import { ProductResponseDTO, Classification, ItemToList } from '../types/dto'
 import { createInstance } from "./http";
 
 /**
@@ -9,7 +9,7 @@ const productService = createInstance({ instanceURL: '/products' });
 /**
  * Function that allows you to fetch all products.
  * @param numberPage contains the number of the page.
- * @returns { Promise<Array<import('../types').ProductResponseDTO>> } all products.
+ * @returns { Promise<Array<import('../types/dto').ProductResponseDTO>> } all products.
  */
 export const fetchAllProducts = async (numberPage = 0): Promise<Array<ProductResponseDTO>> => {
   const { data } = await productService.get('/', {
@@ -23,22 +23,42 @@ export const fetchAllProducts = async (numberPage = 0): Promise<Array<ProductRes
 /**
  * Function that allows you to fetch product by id.
  * @param productId contains the product's id.
- * @returns { Promise<import('../types').ProductResponseDTO> } product.
+ * @returns { Promise<import('../types/dto').ProductResponseDTO> } product.
  */
 export const fetchByIdProduct = async (productId: number): Promise<ProductResponseDTO> => {
   const { data } = await productService.get(`/${productId}`);
   return data;
 }
 
-// export const fetchAllProductsByClassification = async (classification: string) => {
-//   const { data } = await instance.get(`/api/v1/plants/types/${classification}`);
-//   return data;
-// }
+/**
+ * Function that allows you to fetch all products given its classification.
+ * @param { import('../types/dto').Classification} classification contains the type of classification.
+ * @param numberPage contains the number of the page.
+ * @returns { Promise<Array<import('../types').ProductResponseDTO>> } all products by classification.
+ */
+export const fetchByClassificationProduct = async (classification: Classification, numberPage: number): Promise<Array<ProductResponseDTO>> => {
+  const { data } = await productService.get(`/classifications/${classification}`, {
+    params: {
+      page: numberPage
+    }
+  })
+  return data;
+}
 
-// export const fetchAllIdentification = async (): Promise<Array<IdentificationResponseDTO>> => {
-//   const { data } = await instance.get(`/api/v1/plants/identifications`);
-//   return data;
-// }
+/**
+ * Function that allows you to fetch all item to list.
+ * @param numberPage contains the number of the page.
+ * @returns { Promise<Array<import('../types/dto').ItemToList>> } all item to list.
+ */
+export const fetchAllItemToList = async (numberPage: number): Promise<Array<ItemToList>> => {
+  const { data } = await productService.get(`/identifications`, {
+    params: {
+      page: numberPage 
+    }
+  })
+  return data;
+} 
+
 
 // export const getUrls = async (count = 5): Promise<Array<string>> => {
 //   const response: Array<string> = [];
