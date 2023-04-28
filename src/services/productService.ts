@@ -1,5 +1,5 @@
 import axios from "axios"
-import { IdentificationResponseDTO, SingleProductResponseDTO } from "../types";
+import { CreatePlantDTO, IdentificationResponseDTO, SingleProductResponseDTO } from "../types";
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080'
@@ -37,4 +37,9 @@ export const getUrls = async (count = 5): Promise<Array<string>> => {
       response.push(data.message);
   }
   return response;
+}
+
+export const createPlant = async (createPlantDTO: CreatePlantDTO) => {
+  const { data } = await instance.post(`/api/v1/plants`, createPlantDTO)
+  return data;
 }
