@@ -1,4 +1,4 @@
-import { ProductResponseDTO, Classification, ItemToList } from '../types/dto'
+import { ProductResponseDTO, Classification, ItemToList, Status } from '../types/dto'
 import { createInstance } from "./http";
 
 /**
@@ -59,6 +59,20 @@ export const fetchAllItemToList = async (numberPage: number): Promise<Array<Item
   return data;
 } 
 
+/**
+ * Function that allows you to fetch all item to list by status.
+ * @param { import('../types/dto').Status} status contains the type of status.
+ * @param numberPage contains the number of the page.
+ * @returns { Promise<Array<import('../types/dto').ItemToList>> } all item to lis by statust.
+ */
+export const fetchAllItemToListByStatus = async (status: Status, numberPage: number): Promise<Array<ItemToList>> => {
+  const { data } = await productService.get(`/identifications/status/${status}`, {
+    params: {
+      page: numberPage 
+    }
+  })
+  return data;
+} 
 
 // export const getUrls = async (count = 5): Promise<Array<string>> => {
 //   const response: Array<string> = [];
