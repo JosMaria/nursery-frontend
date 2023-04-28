@@ -8,45 +8,45 @@ export const ListPage = () => {
 
 	useEffect(() => {
 		fetchAllIdentification()
-		.then((data: Array<IdentificationResponseDTO>) => setIdentifications(data))
-	}, [identifications])
+			.then((data: Array<IdentificationResponseDTO>) => setIdentifications(data))
+	}, [])
 
-  return (
-    <section className='bg-gray-400'>
-      <div className='relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center p-5'>
+	return (
+		<section className='bg-gray-400'>
+			<div className='relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center p-5'>
 				<Table identifications={identifications} />
-      </div>
-    </section>
-  )
+			</div>
+		</section>
+	)
 }
 
 const Table = ({ identifications }: TableProps) => (
 	<table className='text-sm text-left text-gray-500 dark:text-gray-400 w-4/6'>
 		<TableHeader />
-		<TableBody identifications={identifications}/>
+		<TableBody identifications={identifications} />
 	</table>
 )
 
 const TableHeader = () => (
-  <thead className='text-xs text-gray-600 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-100'>
-    <tr>
-      <TableHeaderItem title='id' />
-      <TableHeaderItem title='nombre comun' />
-      <TableHeaderItem title='nombre cientifico' />
-      <TableHeaderItem title='familia' />
-      <TableHeaderItem title='estado' />
-    </tr>
-  </thead>
+	<thead className='text-xs text-gray-600 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-100'>
+		<tr>
+			<TableHeaderItem title='id' />
+			<TableHeaderItem title='nombre comun' />
+			<TableHeaderItem title='nombre cientifico' />
+			<TableHeaderItem title='familia' />
+			<TableHeaderItem title='estado' />
+		</tr>
+	</thead>
 )
 
 interface TableHeaderItemProps {
-  title: string
+	title: string
 }
 
 const TableHeaderItem = ({ title }: TableHeaderItemProps) => (
-  <th className='px-5 py-5 text-sm'>
-      {title}
-  </th>
+	<th className='px-5 py-5 text-sm'>
+		{title}
+	</th>
 )
 
 interface TableProps {
@@ -56,8 +56,8 @@ interface TableProps {
 const TableBody = ({ identifications }: TableProps) => (
 	<tbody>
 		{
-			identifications.map(identification => 
-				<TableRowItem 
+			identifications.map(identification =>
+				<TableRowItem
 					key={identification.id}
 					identification={identification}
 				/>
@@ -79,9 +79,9 @@ const TableRowItem = ({ identification }: TableRowItemProps) => {
 			<td className={`${style} first-letter:uppercase`}><i>{identification.scientificName} {identification.firstLetterLastname?.toUpperCase()}</i></td>
 			<td className={`${style} first-letter:uppercase`}>{identification.family}</td>
 			<td className={`${style} uppercase`} >{statusToSpanish(identification.status)}</td>
-		</tr>	
+		</tr>
 	)
 }
 
 
-const statusToSpanish = (status: Status) => status === 'IN_CONSERVATION' ?  'EN CONSERVACION' : status === 'AVAILABLE' ? 'DISPONIBLE' : 'NO EXISTENTE';
+const statusToSpanish = (status: Status) => status === 'IN_CONSERVATION' ? 'EN CONSERVACION' : status === 'AVAILABLE' ? 'DISPONIBLE' : 'NO EXISTENTE';
