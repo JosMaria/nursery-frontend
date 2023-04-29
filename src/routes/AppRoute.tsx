@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { SingleProduct } from '../components/SingleProduct';
 import { Form } from '../pages/content/Form';
-import { ListPage, NewsPage, CatalogPage } from '../pages';
-import { News } from '../pages/content/News';
+import { ListPage, NewsPage, CatalogPage, SingleNews, SingleProduct } from '../pages';
 import { Page } from '../pages/HomePage';
 
 export const AppRoute = () => (
@@ -14,7 +12,7 @@ export const AppRoute = () => (
         <Route path='form' element={<Form />} />
         <Route path='list' element={<ListPage />} />
         <Route path='news' element={<NewsPage />} />
-        <Route path='news/:newsId' element={<News />} />
+        <Route path='news/:newsId' element={<SingleNews />} />
       </Route>
     </Routes>
   </BrowserRouter>

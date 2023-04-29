@@ -1,4 +1,4 @@
-import { ProductResponseDTO, Classification, ItemToList, Status } from '../types'
+import { ProductResponseDTO, Classification, ItemToList, Status, SingleProductResponseDTO } from '../types'
 import { createInstance } from './http';
 
 /**
@@ -23,9 +23,9 @@ export const fetchAllProducts = async (numberPage = 0): Promise<Array<ProductRes
 /**
  * Function that allows you to fetch product by id.
  * @param productId contains the product's id.
- * @returns { Promise<import('../types').ProductResponseDTO> } product.
+ * @returns { Promise<import('../types').SingleProductResponseDTO> } product.
  */
-export const fetchByIdProduct = async (productId: number): Promise<ProductResponseDTO> => {
+export const fetchByIdProduct = async (productId: number): Promise<SingleProductResponseDTO> => {
   const { data } = await productService.get(`/${productId}`);
   return data;
 }

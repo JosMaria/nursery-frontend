@@ -8,10 +8,14 @@ export interface ItemToList {
   commonName: string
   scientificName: string
   scientistSurnameInitial: string
-  status: string
+  status: Status
   family: string
 }
 
 export interface ProductResponseDTO extends ItemToList {
     firstUrlPicture: string
+}
+
+export interface SingleProductResponseDTO extends ItemToList {
+  urlPictures: Array<string>
 }
