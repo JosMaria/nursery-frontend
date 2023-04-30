@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+/*import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { createPlant } from "../../services";
 import { fetchAllFamilies } from "../../services/newsService";
@@ -174,3 +174,4 @@ const translateToSpanish = (classification: Classification): ClassificationSpani
       return 'suculenta';
   }
 }
+*/
