@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { ListPage, NewsPage, CatalogPage, SingleNews, SingleProduct } from '../pages';
+import { ListPage, NewsPage, CatalogPage, SingleNews, SingleProduct, CreatePlantForm } from '../pages';
 import { Page } from '../pages/HomePage';
 
 export const AppRoute = () => (
@@ -11,6 +11,7 @@ export const AppRoute = () => (
         <Route path='list' element={<ListPage />} />
         <Route path='news' element={<NewsPage />} />
         <Route path='news/:newsId' element={<SingleNews />} />
+        <Route path='form-create' element={<CreatePlantForm />} />
       </Route>
     </Routes>
   </BrowserRouter>
