@@ -1,17 +1,20 @@
 import { useForm } from 'react-hook-form';
-import { CreatePlantDTO } from '../../types';
-import { createPlant, fetchAllFamilies } from '../../services';
+import { Classification, CreatePlantDTO, Status } from '../../types';
+import { createPlant, fetchAllClassifications, fetchAllFamilies } from '../../services';
 import { useEffect, useState } from 'react';
 
-const STYLE_LABEL = 'pb-2 pl-2 text-sm font-semibold text-gray-900 dark:text-white'
+const allStatus: Array<Status> = ['AVAILABLE', 'NON_EXISTENT', 'IN_CONSERVATION'];
 
 export const CreatePlantForm = () => {
   const { register, handleSubmit, reset } = useForm<CreatePlantDTO>();
   const [families, setFamilies] = useState<Array<string>>([]);
+  const [classifications, setClassifications] = useState<Array<Classification>>([]);
 
   useEffect(() => {
     fetchAllFamilies()
       .then(responseFamilies => setFamilies(responseFamilies));
+    fetchAllClassifications()
+      .then(response => setClassifications(response));
   }, []);
 
   const clickSubmit = (payload: CreatePlantDTO) => {
@@ -21,57 +24,101 @@ export const CreatePlantForm = () => {
   }
 
   return (
-    <form
-      className='w-1/2 p-5 m-5 bg-slate-600 flex flex-wrap justify-start gap-y-5 gap-x-10'
-      onSubmit={handleSubmit(clickSubmit)}>
-      <h1 className='w-full pb-1 text-2xl text-center dark:text-white font-semibold'>CREAR PLANTA</h1>
+    <main className='bg-[var(--color-level-four)] w-full flex flex-col items-center'>
 
-      <div className='flex flex-col w-1/3'>
-        <label htmlFor='commonName' className={STYLE_LABEL}>
-          Nombre Com&uacute;n
-        </label>
-        <input
-          className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
-          type='text' id='commonName' required
-          {...register('commonName')}
-        />
-      </div>
+      <form
+        className='bg-[var(--color-level-two)] w-1/2 grid grid-cols-2 gap-4 justify-items-center p-5 m-5'
+        onSubmit={handleSubmit(clickSubmit)}>
 
-      <div className='flex flex-col w-1/2'>
-        <label className={STYLE_LABEL} htmlFor='scientificName'>
-          Nombre Cientifico
-        </label>
-        <div className='flex gap-5'>
+        <h1 className='col-span-2 text-[var(--color-level-six)] font-semibold text-2xl'>CREAR PLANTA</h1>
+
+        <div className='flex flex-col gap-y-1 w-4/5 p-3'>
+          <label className='text-(var(--color-level-six)) text-base font-semibold pl-1' htmlFor='commonName'>
+            Nombre Com&uacute;n
+          </label>
           <input
-            className='w-9/12 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
-            type='text' id='scientificName'
-            {...register('scientificName')}
-
-          />
-          <input
-            className='w-1/6 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
-            type='text'
-            {...register('scientistSurnameInitial')}
+            className='bg-[var(--color-level-one)] p-3 text-sm rounded'
+            type='text' id='commonName' required
+            {...register('commonName')}
           />
         </div>
-      </div>
 
-      <div className='flex flex-col w-1/3'>
-        <label className={STYLE_LABEL} htmlFor='family'>
-          Familia
-        </label>
-        <select
-          className='w-full p-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          id='family'
-          {...register('family')}>
-          {
-            families.map((optionItem, index) =>
-              <option className='p-3' key={index} value={optionItem}>
-                {optionItem}
-              </option>)
-          }
-        </select>
-      </div>
-    </form>
+        <div className='flex flex-col gap-y-1 w-full p-3 justify-self-start'>
+          <label className='text-(var(--color-level-six)) text-base font-semibold pl-1' htmlFor='scientificName'>
+            Nombre Cientifico
+          </label>
+          <div className='flex gap-5'>
+            <input
+              className='bg-[var(--color-level-one)] p-3 text-sm rounded w-4/6'
+              type='text' id='scientificName'
+              {...register('scientificName')}
+            />
+            <input
+              className='bg-[var(--color-level-one)] p-3 text-sm rounded w-1/6'
+              type='text' id='scientificName'
+              {...register('scientistSurnameInitial')}
+            />
+          </div>
+        </div>
+
+        <div className='flex flex-col gap-y-1 p-3 w-1/2'>
+          <label className='text-(var(--color-level-six)) text-base font-semibold pl-1' htmlFor='family'>
+            Familia
+          </label>
+          <select className='bg-[var(--color-level-one)] p-3 text-sm rounded'
+            id='family'
+            {...register('family')}>
+            {
+              families.map((optionItem, index) =>
+                <option className='p-3' key={index} value={optionItem}>
+                  {optionItem}
+                </option>)
+            }
+          </select>
+        </div>
+
+        <div className='flex flex-col gap-y-1 w-1/2 p-3 justify-self-start'>
+          <label className='text-(var(--color-level-six)) text-base font-semibold pl-1' htmlFor='status'>
+            Estado
+          </label>
+          <select className='bg-[var(--color-level-one)] p-3 text-sm rounded'
+            id='status'
+            {...register('status')}>
+            {
+              allStatus.map((optionItem, index) =>
+                <option className='p-3' key={index} value={optionItem}>
+                  {optionItem}
+                </option>)
+            }
+          </select>
+        </div>
+
+        <div className='col-span-2 flex flex-col gap-y-2 p-3'>
+          <label className='text-(var(--color-level-six)) text-base font-semibold pl-1'>
+            Clasificaciones
+          </label>
+          <div className='flex flex-wrap gap-3 justify-center'>
+            {
+              classifications.map((value, index) =>
+                <div key={index} className='bg-[var(--color-level-four)] w-36 p-3 rounded-md'>
+                  <input className='mr-2' type='checkbox' id={value} value={value} {...register('classifications')} />
+                  <label className='text-sm font-medium text-gray-900 dark:text-gray-300' htmlFor={value}>
+                    {value}
+                  </label>
+                </div>
+              )
+            }
+          </div>
+        </div>
+
+        <div className='col-span-2 flex justify-center m-5'>
+          <button
+            className='text-white font-medium bg-[var(--color-level-five)] hover:bg-[var(--color-level-four)] rounded text-base py-4 px-7'
+            type='submit'>
+            Crear planta
+          </button>
+        </div>
+      </form>
+    </main>
   )
 }

@@ -12,7 +12,7 @@ const plantService = createInstance({ instanceURL: '/plants' });
  * @returns { Promise<import('../types').PlantResponseDTO> } news created by API.
  */
 export const createPlant = async (createPlantDTO: CreatePlantDTO): Promise<PlantResponseDTO> => {
-  const { data } = await plantService.post('/', createPlantDTO);
+  const { data } = await plantService.post('', createPlantDTO);
   return data;
 }
 
