@@ -10,6 +10,6 @@ const familyService = createInstance({ instanceURL: '/families' });
  * @returns { Promise<Array<string>> } all families.
  */
 export const fetchAllFamilies = async (): Promise<Array<string>> => {
-  const { data } = await familyService.get('/')
-  return data;
+  const { data } = await familyService.get('')
+  return data; 
 }

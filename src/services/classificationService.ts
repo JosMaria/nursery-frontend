@@ -11,6 +11,6 @@ const classificationService = createInstance({ instanceURL: '/classifications' }
  * @returns { Promise<Array<import('../types').Classification>> } all classifications..
  */
 export const fetchAllClassifications = async (): Promise<Array<Classification>> => {
-  const { data } = await classificationService.get('/');
+  const { data } = await classificationService.get('');
   return data;
 }
