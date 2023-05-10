@@ -7,16 +7,16 @@ export const Header = () => (
   <header className='bg-[var(--color-level-seven)] flex justify-between items-center px-10 py-6'>
     <Logo />
     <Navbar />
-    <NavLink to="#">
+    <NavLink to='#'>
       <FaUserCircle size='3.5em' color='white' />
     </NavLink>
   </header>
 )
 
 const Logo = () => (
-  <div className="flex items-center gap-5">
-    <img src="https://flowbite.com/docs/images/logo.svg" className="h-6 sm:h-9 w-fit" alt="Flowbite Logo" />
-    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Vivero</span>
+  <div className='flex items-center gap-5'>
+    <img src='https://flowbite.com/docs/images/logo.svg' className='h-6 sm:h-9 w-fit' alt='Flowbite Logo' />
+    <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>Vivero</span>
   </div>
 )
 
