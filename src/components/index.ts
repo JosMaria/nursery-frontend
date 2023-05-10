@@ -1,3 +1,3 @@
-export { Footer } from './footer/Footer';
-export { Header } from './Header';
+export * from './footer'
+export * from './header'
 export { Alert } from './Alert';
