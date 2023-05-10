@@ -55,7 +55,7 @@ export const CreatePlantForm = () => {
             />
             <input
               className='bg-[var(--color-level-one)] p-3 text-sm rounded w-1/6'
-              type='text'
+              type='text' id='scientificName'
               {...register('scientistSurnameInitial')}
             />
           </div>
