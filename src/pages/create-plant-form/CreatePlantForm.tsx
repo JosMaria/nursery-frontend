@@ -90,16 +90,16 @@ export const CreatePlantForm = () => {
           </select>
         </div>
 
-        <div className="col-span-2 flex flex-col gap-y-2 p-3">
+        <div className='col-span-2 flex flex-col gap-y-2 p-3'>
           <label className='text-(var(--color-level-six)) text-base font-semibold pl-1'>
             Clasificaciones
           </label>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className='flex flex-wrap gap-3 justify-center'>
             {
               classifications.map((value, index) =>
                 <div key={index} className='bg-[var(--color-level-four)] w-36 p-3 rounded-md'>
-                  <input className="mr-2" type='checkbox' id={value} value={value} {...register('classifications')} />
-                  <label className="text-sm font-medium text-gray-900 dark:text-gray-300" htmlFor={value}>
+                  <input className='mr-2' type='checkbox' id={value} value={value} {...register('classifications')} />
+                  <label className='text-sm font-medium text-gray-900 dark:text-gray-300' htmlFor={value}>
                     {value}
                   </label>
                 </div>
@@ -108,7 +108,7 @@ export const CreatePlantForm = () => {
           </div>
         </div>
 
-        <div className="col-span-2 flex justify-center m-5">
+        <div className='col-span-2 flex justify-center m-5'>
           <button
             className='text-white font-medium bg-[var(--color-level-five)] hover:bg-[var(--color-level-four)] rounded text-base py-4 px-7'
             type='submit'>
