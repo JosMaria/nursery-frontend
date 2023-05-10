@@ -9,9 +9,14 @@ import { AxiosInstanceConfig } from '../../types';
  * @returns instance of axios.
  */
 export function createInstance({ instanceURL, ...rest }: AxiosInstanceConfig) {
-	const baseURL = `${API_URL}${instanceURL}`
+	const baseURL = `${API_URL}${instanceURL}`;
+	const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb25zdWVsbyIsImlhdCI6MTY4MzcyNjY0NSwiZXhwIjoxNjgzODEzMDQ1fQ.DA8btWx7FYrW8QkSEUpCt0VOl0LLHAuyTs0qP2FVswE';
+
 	return axios.create({
 		baseURL,
 		...rest,
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
 	})
 }

@@ -1,17 +1,20 @@
 import { useForm } from 'react-hook-form';
-import { CreatePlantDTO } from '../../types';
-import { createPlant, fetchAllFamilies } from '../../services';
+import { Classification, CreatePlantDTO, Status } from '../../types';
+import { createPlant, fetchAllClassifications, fetchAllFamilies } from '../../services';
 import { useEffect, useState } from 'react';
 
-const classifications = ['ORNAMENTAL', 'FOREST', 'INDUSTRIAL', 'ALIMENTARY', 'MEDICINAL', 'EXOTIC', 'CACTUS', 'FRUITFUL', 'GRASS', 'SUCCULENT'];
+const allStatus: Array<Status> = ['AVAILABLE', 'NON_EXISTENT', 'IN_CONSERVATION'];
 
 export const CreatePlantForm = () => {
   const { register, handleSubmit, reset } = useForm<CreatePlantDTO>();
   const [families, setFamilies] = useState<Array<string>>([]);
+  const [classifications, setClassifications] = useState<Array<Classification>>([]);
 
   useEffect(() => {
     fetchAllFamilies()
       .then(responseFamilies => setFamilies(responseFamilies));
+    fetchAllClassifications()
+      .then(response => setClassifications(response));
   }, []);
 
   const clickSubmit = (payload: CreatePlantDTO) => {
@@ -82,7 +85,7 @@ export const CreatePlantForm = () => {
             id='status'
             {...register('status')}>
             {
-              ['AVAILABLE', 'NON_EXISTENT', 'CONSERVATION'].map((optionItem, index) =>
+              allStatus.map((optionItem, index) =>
                 <option className='p-3' key={index} value={optionItem}>
                   {optionItem}
                 </option>)

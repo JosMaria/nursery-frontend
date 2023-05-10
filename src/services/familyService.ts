@@ -10,11 +10,6 @@ const familyService = createInstance({ instanceURL: '/families' });
  * @returns { Promise<Array<string>> } all families.
  */
 export const fetchAllFamilies = async (): Promise<Array<string>> => {
-  const token = '?';
-  const { data } = await familyService.get('', { 
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  })
+  const { data } = await familyService.get('')
   return data; 
 }
