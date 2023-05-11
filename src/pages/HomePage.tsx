@@ -4,7 +4,9 @@ import { Outlet } from 'react-router-dom';
 export const Page = () => (
   <>
     <Header />
-    <Outlet />
+    <main className='bg-[var(--color-level-four)] flex justify-center'>
+      <Outlet />
+    </main>
     <Footer />
   </>
 )

@@ -11,10 +11,10 @@ export const ClassificationNavbar = () => {
   }, [])
 
   return (
-    <nav className='flex justify-evenly bg-[var(--color-level-six)] text-[var(--color-level-one)]'>
+    <nav className='w-full flex justify-evenly bg-[var(--color-level-six)] text-[var(--color-level-one)]'>
       {
         classifications.map((classification, index) => 
-          <div className='p-4 text-sm flex-1 text-center font-medium hover:bg-[var(--color-level-five)] hover:cursor-pointer' 
+          <div className='p-3.5 text-sm flex-1 text-center font-medium hover:bg-[var(--color-level-five)] hover:cursor-pointer' 
             key={index}>
             {classification}
           </div>
