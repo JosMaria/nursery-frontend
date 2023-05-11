@@ -17,7 +17,7 @@ export const CatalogPage = () => {
         {
           products.length === 0 ? 
             <EmptyContent /> :
-            <div className='w-full grid grid-cols-4 gap-4 place-items-center'>
+            <div className='w-full grid grid-cols-4 gap-4 place-items-center p-5'>
               {
                 products.map(product =>
                   <CardProduct

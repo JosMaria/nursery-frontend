@@ -3,11 +3,11 @@ const styleButtonDisable = 'gap-1 text-lg font-medium bg-slate-500  p-4 rounded-
 
 export const ButtonsPagination = () => {
   return (
-    <div>
-      <button className={styleButtonDisable}>
+    <div className="w-full flex justify-center items-center gap-10 p-4">
+      <button className='hover:bg-[var(--color-level-three)] font-semibold bg-[var(--color-level-two)] text-lg px-6 py-4 border border-[var(--color-level-three)] rounded-md'>
         Anterior
       </button>
-      <button className={styleButtonEnable}>
+      <button className='hover:bg-[var(--color-level-three)] font-semibold bg-[var(--color-level-two)] text-lg px-6 py-4 border border-[var(--color-level-three)] rounded-md'>
         Siguiente
       </button>
     </div>
