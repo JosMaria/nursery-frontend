@@ -2,7 +2,7 @@ import { information, about, copyright } from './constants/index'
 
 export const Footer = () => (
   <footer className='bg-[var(--color-level-seven)] text-[var(--color-level-one)]'>
-    <div className='flex flex-wrap justify-around content-center p-5'>
+    <div className='flex flex-wrap justify-around content-center p-5 gap-10'>
       <Section title={information.title} content={information.content} />
       <Section title={about.title} content={about.content} />
     </div>

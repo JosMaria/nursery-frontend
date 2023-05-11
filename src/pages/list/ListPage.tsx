@@ -11,11 +11,9 @@ export const ListPage = () => {
       .then(responseItems => setItems(responseItems));
   }, []);
 
-  return (
-    <section className='bg-gray-400'>
-			<div className='relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center p-5'>
-        <Table items={items} />
-			</div>
-		</section>
+  return (    
+    <div className='flex justify-center p-4'>
+      <Table items={items} />
+    </div>
   )
 }
