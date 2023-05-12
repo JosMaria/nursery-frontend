@@ -8,7 +8,7 @@ export const Header = () => (
     <Logo />
     <Navbar />
     <NavLink to='#'>
-      <FaUserCircle size='3.5em' color='white' />
+      <FaUserCircle size='2.5em' color='white' />
     </NavLink>
   </header>
 )
