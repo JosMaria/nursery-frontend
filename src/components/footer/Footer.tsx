@@ -16,7 +16,7 @@ interface FooterSectionProps {
 }
 
 const Section = ({ title, content }: FooterSectionProps) => (
-  <div className='flex flex-col w-[50em]'>
+  <div className='flex flex-col w-[30em]'>
     <h2 className='text-xl font-semibold pb-4'>{title}</h2>
     <p className='text-sm'>{content}</p>
   </div>

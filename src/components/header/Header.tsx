@@ -16,7 +16,7 @@ export const Header = () => (
 const Logo = () => (
   <div className='flex items-center gap-5'>
     <img src='https://flowbite.com/docs/images/logo.svg' className='h-6 sm:h-9 w-fit' alt='Flowbite Logo' />
-    <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>Vivero</span>
+    <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>Vivero de FDRyT</span>
   </div>
 )
 

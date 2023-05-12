@@ -6,8 +6,8 @@ interface InformationPlantProps {
 
 export const InformationPlant = ({ product }: InformationPlantProps) => {
   return (
-    <div className='flex flex-col'>
-      <h1 className='text-2xl p-3.5'>
+    <div className='flex flex-col justify-start'>
+      <h1 className='text-3xl font-medium uppercase mb-5'>
         {product.commonName}
       </h1>
       <p className='text-lg'>
@@ -19,6 +19,15 @@ export const InformationPlant = ({ product }: InformationPlantProps) => {
       <p className='text-lg'>
         <b>Estado:</b> {product.status}
       </p>
+      {/* <ul>
+        {
+          classifications.map(classification => 
+            <li>
+              {classification}
+            </li>
+          )
+        }
+      </ul> */}
     </div>
   )
 }
