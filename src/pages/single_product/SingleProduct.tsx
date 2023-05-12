@@ -17,7 +17,7 @@ const singleProductInitial: SingleProductResponseDTO = {
 }
 
 export const SingleProduct = () => {
-  const [product, setProduct] = useState<SingleProductResponseDTO>(singleProductInitial);
+  const [product, setProduct] = useState(singleProductInitial);
   const { productId } = useParams();
 
   useEffect(() => {
