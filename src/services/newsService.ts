@@ -21,7 +21,7 @@ export const createNews = async (createNewsDTO: CreateNewsDTO): Promise<NewsResp
  * @returns { Promise<Array<import('../types').NewsResponseDTO>> } all news.
  */
 export const fetchAllNews = async (): Promise<Array<NewsResponseDTO>> => {
-    const { data } = await newsService.get('/');
+    const { data } = await newsService.get('');
     return data;
 }
 
