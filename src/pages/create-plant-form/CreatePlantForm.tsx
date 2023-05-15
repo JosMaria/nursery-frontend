@@ -20,7 +20,7 @@ export const CreatePlantForm = () => {
   const clickSubmit = (payload: CreatePlantDTO) => {
     createPlant(payload);
     alert('Planta creada');
-    reset()
+    reset();
   }
 
   return (
