@@ -1,7 +1,7 @@
-export type Classification = 'ORNAMENTAL' | 'FOREST' | 'INDUSTRIAL' | 'ALIMENTARY' | 'MEDICINAL' | 
-'EXOTIC' | 'CACTUS' | 'FRUITFUL' | 'GRASS' | 'SUCCULENT' 
+export type Classification = 'ORNAMENTAL' | 'FOREST' | 'INDUSTRIAL' | 'ALIMENTARY' | 'MEDICINAL' |
+  'EXOTIC' | 'CACTUS' | 'FRUITFUL' | 'GRASS' | 'SUCCULENT'
 
-export type Status = 'AVAILABLE' | 'IN_CONSERVATION' | 'NON_EXISTENT' 
+export type Status = 'AVAILABLE' | 'IN_CONSERVATION' | 'NON_EXISTENT'
 
 export interface ItemToList {
   id: number
@@ -13,9 +13,10 @@ export interface ItemToList {
 }
 
 export interface ProductResponseDTO extends ItemToList {
-    firstUrlPicture: string
+  firstUrlPicture: string
 }
 
 export interface SingleProductResponseDTO extends ItemToList {
   urlPictures: Array<string>
+  classifications: Array<string>
 }

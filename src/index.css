@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  
   --color-level-one: #DAD7CD;
   --color-level-two: #A3B18A;
   --color-level-three: #588157;
@@ -14,16 +10,4 @@
   --color-level-five: #344E41;
   --color-level-six: #132A13;
   --color-level-seven: #111D13
-}
-
-body {
-  font-family: 'Lato', sans-serif;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.6em;
-}
-
-.app-container { 
-  display: grid;
-  min-height: 100vh;
-  grid-template-rows: auto 1fr auto
 }
