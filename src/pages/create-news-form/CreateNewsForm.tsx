@@ -29,13 +29,13 @@ export const CreateNewsForm = () => {
 			</div>
 
 			<div className='flex flex-col gap-y-1 w-2/3'>
-				<label className="text-(var(--color-level-six)) text-base font-semibold pl-1" htmlFor="description">
+				<label className='text-(var(--color-level-six)) text-base font-semibold pl-1' htmlFor='description'>
 					Descripci&oacute;n
 				</label>
 				<textarea
-					className="p-2 text-sm bg-[var(--color-level-one)] rounded-md placeholder-[var(--color-level-five)]"
-					placeholder="Descripci&oacute;n ..."
-					id="description"
+					className='p-2 text-sm bg-[var(--color-level-one)] rounded-md placeholder-[var(--color-level-five)]'
+					placeholder='Descripci&oacute;n ...'
+					id='description'
 					rows={10}
 					{...register('description')}>
 				</textarea>
