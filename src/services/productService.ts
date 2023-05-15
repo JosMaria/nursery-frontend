@@ -12,7 +12,7 @@ const productService = createInstance({ instanceURL: '/products' });
  * @returns { Promise<Array<import('../types').ProductResponseDTO>> } all products.
  */
 export const fetchAllProducts = async (numberPage = 0): Promise<Array<ProductResponseDTO>> => {
-  const { data } = await productService.get('/', {
+  const { data } = await productService.get('', {
     params: {
       page: numberPage
     }

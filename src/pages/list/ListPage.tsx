@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ItemToList } from '../../types'
 import { fetchAllItemsToList } from '../../services';
-import { Table } from './components';
+import { Admin, Table } from './components';
 
 export const ListPage = () => {
   const [items, setItems] = useState<Array<ItemToList>>([]);
@@ -12,10 +12,9 @@ export const ListPage = () => {
   }, []);
 
   return (
-    <section className='bg-gray-400'>
-			<div className='relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center p-5'>
-        <Table items={items} />
-			</div>
-		</section>
+    <div className='flex flex-col gap-5 justify-center p-4'>
+      <Admin />
+      <Table items={items} />
+    </div>
   )
 }

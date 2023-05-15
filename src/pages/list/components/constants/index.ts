@@ -1,0 +1,1 @@
+export const titleHeaders = ['ID', 'NOMBRE COMUN', 'NOMBRE CIENTIFICO', 'FAMILIA', 'ESTADO'];
