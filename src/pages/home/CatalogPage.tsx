@@ -1,20 +1,26 @@
 import { useEffect, useState } from 'react'
-import { ProductResponseDTO } from '../../types';
+import { Classification, ProductResponseDTO } from '../../types';
 import { CardProduct, ClassificationNavbar, ButtonsPagination, EmptyContent } from './components';
-import { fetchAllProducts } from '../../services';
+import { fetchByClassificationProducts } from '../../services';
 
 export const CatalogPage = () => {
   const [products, setProducts] = useState<Array<ProductResponseDTO>>([]);
   const [page, setPage] = useState(0);
+  const [classification, setClassification] = useState<Classification>('ALL');
 
   useEffect(() => {
-    fetchAllProducts(page)
+    fetchByClassificationProducts(classification, page)
       .then(responseProducts => setProducts(responseProducts));
-  }, [page]);
+  }, [page, classification]);
+
+  const changeClassification = (classification: Classification) => {
+    setClassification(classification);
+    setPage(0);
+  }
 
   return (
     <section className='w-full flex flex-col justify-between items-center'>
-      <ClassificationNavbar />
+      <ClassificationNavbar changeClassification={changeClassification} />
       {
         products.length === 0 ?
           <EmptyContent /> :
