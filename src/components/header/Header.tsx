@@ -16,7 +16,10 @@ export const Header = () => (
 
 const Logo = () => (
   <div className='flex items-center gap-2'>
-    <img src='https://images.vexels.com/media/users/3/148692/isolated/preview/4ff28c6516ef2c46843f69010116d898-maceta-con-im--genes-predise--adas-de-la-planta-by-vexels.png' className='w-12' alt='Flowbite Logo' />
+    <img 
+      src='https://images.vexels.com/media/users/3/148692/isolated/preview/4ff28c6516ef2c46843f69010116d898-maceta-con-im--genes-predise--adas-de-la-planta-by-vexels.png' 
+      className='w-12' 
+      alt='Logo' />
     <span className='self-center text-xl font-semibold whitespace-nowrap text-[var(--color-level-one)]'>Vivero de FDRyT</span>
   </div>
 )
