@@ -12,7 +12,7 @@ const newsService = createInstance({ instanceURL: '/news' })
  * @returns { Promise<import('../types').NewsResponseDTO> } news created by API.
  */
 export const createNews = async (createNewsDTO: CreateNewsDTO): Promise<NewsResponseDTO> => {
-    const { data } = await newsService.post('/', createNewsDTO);
+    const { data } = await newsService.post('', createNewsDTO);
     return data;
 }
 

@@ -22,7 +22,7 @@ export const InformationPlant = ({ product }: InformationPlantProps) => {
       <p className='text-lg'>
         <b>Clasificaciones: </b>
       </p>
-      <ul className="list-disc list-inside self-center">
+      <ul className='list-disc list-inside self-center'>
         {
           product.classifications.map((item, index) => <li key={index}>{item}</li>)
         }
