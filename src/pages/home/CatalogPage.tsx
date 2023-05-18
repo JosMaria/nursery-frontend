@@ -36,6 +36,8 @@ export const CatalogPage = () => {
           </div>
       }
       <ButtonsPagination
+        isDisabledPrev={page <= 0}
+        isDisabledNext={products.length < 12}
         setPage={setPage}
       />
     </section>
