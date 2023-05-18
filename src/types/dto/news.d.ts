@@ -1,5 +1,4 @@
 export interface CreateNewsDTO {
-  urlImage: string
   title: string
   description: string
 }
