@@ -24,18 +24,12 @@ export const CatalogPage = () => {
       {
         products.length === 0 ?
           <EmptyContent /> :
-          <div className='w-full grid grid-cols-4 gap-4 place-items-center p-5'>
+          <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
             {
               products.map(product =>
                 <CardProduct
                   key={product.id}
-                  id={product.id}
-                  commonName={product.commonName}
-                  scientificName={product.scientificName}
-                  scientistSurnameInitial={product.scientistSurnameInitial}
-                  family={product.family}
-                  status={product.status}
-                  firstUrlPicture={product.firstUrlPicture}
+                  productResponseDTO={product}
                 />
               )
             }
