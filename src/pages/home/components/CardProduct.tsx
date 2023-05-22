@@ -6,7 +6,7 @@ interface CardProductProps {
 }
 
 export const CardProduct = ({ productResponseDTO }: CardProductProps) => (
-  <div className='w-9/12 m-3 h-full hover:shadow-xl flex flex-col justify-center bg-[var(--color-level-five)]'>
+  <div className='w-9/12 m-3 h-full hover:shadow-xl flex flex-col justify-center bg-[var(--color-level-six)]'>
     <img
       className='rounded-t w-full p-1 h-4/6'
       src='https://2.bp.blogspot.com/-A5OrWCBE6hk/VLZlh6NP2fI/AAAAAAAAAYc/vhvMMqtlu18/s1600/plantas.jpg'
