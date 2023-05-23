@@ -37,20 +37,15 @@ export const CatalogPage = () => {
     <section className='w-full flex flex-col justify-between items-center'>
       <ClassificationNavbar changeClassification={changeClassification} />
       {
-        products.length === 0 ?
-          <EmptyContent /> :
+        infoPage.empty ? <EmptyContent /> : (
           <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
             {
               products.map(product => <CardProduct key={product.id} productResponseDTO={product} />)
             }
           </div>
+        )
       }
-      <p className='self-start text-[var(--color-level-one)] pl-16 text-lg font-medium'>Mostrado: {(infoPage.number * infoPage.totalPages) + infoPage.numberOfElements} de {infoPage.totalElements}</p>
-      <ButtonsPagination
-        isDisabledPrev={numberPage <= 0}
-        isDisabledNext={products.length < 12}
-        setPage={setNumberPage}
-      />
+      <ButtonsPagination setPage={setNumberPage} infoPage={infoPage} />
     </section>
   )
 }
