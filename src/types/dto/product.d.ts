@@ -21,15 +21,15 @@ export interface SingleProductResponseDTO extends ItemToList {
   classifications: Array<string>
 }
 
-interface Page {
+export interface Page {
   last: boolean
   totalElements: number
   totalPages: number
   size: number
   number: number
-  first: number
+  first: boolean
   numberOfElements: number
-  empty: number
+  empty: boolean
 }
 
 export interface PageProductResponseDTO extends Page {
