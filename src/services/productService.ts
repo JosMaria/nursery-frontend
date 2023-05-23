@@ -1,4 +1,4 @@
-import { ProductResponseDTO, Classification, ItemToList, Status, SingleProductResponseDTO, PageProductResponseDTO } from '../types'
+import { ProductResponseDTO, Classification, ItemToList, Status, SingleProductResponseDTO, PageProductResponseDTO, PageItemToList } from '../types'
 import { createInstance } from './http';
 
 /**
@@ -50,9 +50,9 @@ export const fetchByClassificationProducts = async (classification: Classificati
 /**
  * Function that allows you to fetch all item to list.
  * @param numberPage contains the number of the page.
- * @returns { Promise<Array<import('../types').ItemToList>> } all item to list.
+ * @returns { Promise<Array<import('../types').PageItemToList>> } all item to list.
  */
-export const fetchAllItemsToList = async (numberPage = 0): Promise<Array<ItemToList>> => {
+export const fetchAllItemsToList = async (numberPage = 0): Promise<PageItemToList> => {
   const { data } = await productService.get(`/identifications`, {
     params: {
       page: numberPage
