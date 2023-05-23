@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Classification, Page, ProductResponseDTO } from '../../types';
-import { CardProduct, ClassificationNavbar, ButtonsPagination, EmptyContent } from './components';
+import { CardProduct, ClassificationNavbar, PaginationSection, EmptyContent } from './components';
 import { fetchByClassificationProducts } from '../../services';
 
 const infoPageDefault = {
@@ -45,7 +45,7 @@ export const CatalogPage = () => {
           </div>
         )
       }
-      <ButtonsPagination setPage={setNumberPage} infoPage={infoPage} />
+      <PaginationSection setPage={setNumberPage} infoPage={infoPage} />
     </section>
   )
 }

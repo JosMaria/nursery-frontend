@@ -11,7 +11,7 @@ export const Table = ({ items }: TableProps) => (
       <tr>
         {
           titleHeaders.map((titleHeader, index) =>
-            <th key={index} className='p-5 text-sm' >
+            <th key={index} className='p-5 text-sm text-start' >
               {titleHeader}
             </th>
           )
@@ -40,7 +40,7 @@ const TableBody = ({ items }: TableProps) => (
           <td className='px-6 py-3.5 text-[var(--color-level-one)] font-medium first-letter:uppercase'>
             {item.family}
           </td>
-          <td className='px-6 py-3.5 text-[var(--color-level-one)] font-medium text-center'>
+          <td className='px-6 py-3.5 text-[var(--color-level-one)] font-medium'>
             {item.status}
           </td>
         </tr>
