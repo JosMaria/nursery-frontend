@@ -10,7 +10,7 @@ export const CatalogPage = () => {
 
   useEffect(() => {
     fetchByClassificationProducts(classification, page)
-      .then(responseProducts => setProducts(responseProducts));
+      .then(response => setProducts(response.content));
   }, [page, classification]);
 
   const changeClassification = (classification: Classification) => {
