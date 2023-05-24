@@ -1,30 +1,30 @@
-import { Dispatch, SetStateAction } from 'react'
 import { Page } from '../../../types';
 
 interface PaginationSectionProps {
-  setPage: Dispatch<SetStateAction<number>>
   infoPage: Page
+  prevPage: () => void
+  nextPage: () => void
 }
 
-const styleDefaultButton = 'font-medium text-lg px-6 py-4 border border-[var(--color-level-three)] rounded-md';
+const styleDefaultButton = 'font-medium text-lg p-3 border border-[var(--color-level-three)] rounded-md';
 const bgEnabled = 'bg-[var(--color-level-two)] hover:bg-[var(--color-level-three)]';
 const bgDisabled = 'bg-[var(--color-level-three)]';
 
-export const PaginationSection = ({ setPage, infoPage }: PaginationSectionProps) => (
-  <div className='flex flex-col w-full p-5'>
-    <p className='self-start text-[var(--color-level-one)] text-lg font-medium'>
+export const PaginationSection = ({ infoPage, prevPage, nextPage }: PaginationSectionProps) => (
+  <div className='flex justify-between items-center w-full px-16 py-5'>
+    <p className='text-[var(--color-level-one)] text-lg font-medium'>
       Mostrando: {(infoPage.number * infoPage.size) + 1} - {(infoPage.number * infoPage.size) + infoPage.numberOfElements} de {infoPage.totalElements}
     </p>
-    <div className='w-full flex justify-center items-center gap-10'>
+    <div className='flex gap-5'>
       <PagingButton
         text='Anterior'
         isDisabled={infoPage.empty || infoPage.first}
-        changePage={() => setPage(prev => prev - 1)}
+        changePage={prevPage}
       />
       <PagingButton
         text='Siguiente'
         isDisabled={infoPage.empty || infoPage.last}
-        changePage={() => setPage(prev => prev + 1)}
+        changePage={nextPage}
       />
     </div>
   </div>

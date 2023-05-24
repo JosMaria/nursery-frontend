@@ -33,6 +33,9 @@ export const CatalogPage = () => {
     setNumberPage(0);
   }
 
+  const prevPage = () => setNumberPage(prev => prev - 1);
+  const nextPage = () => setNumberPage(prev => prev + 1);
+
   return (
     <section className='w-full flex flex-col justify-between items-center'>
       <ClassificationNavbar changeClassification={changeClassification} />
@@ -45,7 +48,7 @@ export const CatalogPage = () => {
           </div>
         )
       }
-      <PaginationSection setPage={setNumberPage} infoPage={infoPage} />
+      <PaginationSection infoPage={infoPage} prevPage={prevPage} nextPage={nextPage} />
     </section>
   )
 }
