@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Classification, Page, ProductResponseDTO } from '../../types';
-import { CardProduct, ClassificationNavbar, PaginationSection, EmptyContent } from './components';
+import { CardProduct, ClassificationNavbar, PaginationSection } from './components';
 import { fetchByClassificationProducts } from '../../services';
+import { EmptyContent } from '../../components';
 
 const infoPageDefault = {
   totalElements: 0,
