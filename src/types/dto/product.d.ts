@@ -20,3 +20,22 @@ export interface SingleProductResponseDTO extends ItemToList {
   urlPictures: Array<string>
   classifications: Array<string>
 }
+
+export interface Page {
+  last: boolean
+  totalElements: number
+  totalPages: number
+  size: number
+  number: number
+  first: boolean
+  numberOfElements: number
+  empty: boolean
+}
+
+export interface PageProductResponseDTO extends Page {
+  content: Array<ProductResponseDTO>
+}
+
+export interface PageItemToList extends Page {
+  content: Array<ItemToList>
+}
