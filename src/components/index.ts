@@ -1,3 +1,4 @@
 export * from './footer'
 export * from './header'
-export * from './EmptyContent'
+export * from './EmptyContentPlant'
+export * from './EmptyContentNews'
