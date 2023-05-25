@@ -1,4 +1,4 @@
-import { ProductResponseDTO, Classification, ItemToList, Status, SingleProductResponseDTO } from '../types'
+import { ProductResponseDTO, Classification, ItemToList, Status, SingleProductResponseDTO, PageProductResponseDTO, PageItemToList } from '../types'
 import { createInstance } from './http';
 
 /**
@@ -36,28 +36,30 @@ export const fetchByIdProduct = async (productId: number): Promise<SingleProduct
  * @param numberPage contains the number of the page.
  * @returns { Promise<Array<import('../types').ProductResponseDTO>> } all products by classification.
  */
-export const fetchByClassificationProduct = async (classification: Classification, numberPage = 0): Promise<Array<ProductResponseDTO>> => {
-  const { data } = await productService.get(`/classifications/${classification}`, {
+export const fetchByClassificationProducts = async (classification: Classification = 'ALL', numberPage = 0): Promise<PageProductResponseDTO> => {
+  const path = (classification === 'ALL') ? '' : `/classifications/${classification}`;
+  const { data } = await productService.get(path, {
     params: {
       page: numberPage
     }
-  })
+  });
+
   return data;
 }
 
 /**
  * Function that allows you to fetch all item to list.
  * @param numberPage contains the number of the page.
- * @returns { Promise<Array<import('../types').ItemToList>> } all item to list.
+ * @returns { Promise<Array<import('../types').PageItemToList>> } all item to list.
  */
-export const fetchAllItemsToList = async (numberPage = 0): Promise<Array<ItemToList>> => {
+export const fetchAllItemsToList = async (numberPage = 0): Promise<PageItemToList> => {
   const { data } = await productService.get(`/identifications`, {
     params: {
-      page: numberPage 
+      page: numberPage
     }
   })
   return data;
-} 
+}
 
 /**
  * Function that allows you to fetch all item to list by status.
@@ -68,7 +70,7 @@ export const fetchAllItemsToList = async (numberPage = 0): Promise<Array<ItemToL
 export const fetchAllItemsToListByStatus = async (status: Status, numberPage = 0): Promise<Array<ItemToList>> => {
   const { data } = await productService.get(`/identifications/status/${status}`, {
     params: {
-      page: numberPage 
+      page: numberPage
     }
   })
   return data;
