@@ -11,21 +11,15 @@ const bgEnabled = 'bg-[var(--color-level-two)] hover:bg-[var(--color-level-three
 const bgDisabled = 'bg-[var(--color-level-three)]';
 
 export const PaginationSection = ({ infoPage, prevPage, nextPage }: PaginationSectionProps) => (
-  <div className='flex justify-between items-center w-full px-16 py-5'>
-    <p className='text-[var(--color-level-one)] text-lg font-medium'>
-      Mostrando: {(infoPage.number * infoPage.size) + 1} - {(infoPage.number * infoPage.size) + infoPage.numberOfElements} de {infoPage.totalElements}
-    </p>
+  <div className='flex justify-between items-center w-full px-16 pb-5'>
+    <PagingText
+      start={(infoPage.number * infoPage.size) + 1}
+      end={(infoPage.number * infoPage.size) + infoPage.numberOfElements}
+      total={infoPage.totalElements}
+    />
     <div className='flex gap-5'>
-      <PagingButton
-        text='Anterior'
-        isDisabled={infoPage.empty || infoPage.first}
-        changePage={prevPage}
-      />
-      <PagingButton
-        text='Siguiente'
-        isDisabled={infoPage.empty || infoPage.last}
-        changePage={nextPage}
-      />
+      <PagingButton text='Anterior' isDisabled={infoPage.first} changePage={prevPage} />
+      <PagingButton text='Siguiente' isDisabled={infoPage.last} changePage={nextPage} />
     </div>
   </div>
 )
@@ -43,4 +37,16 @@ const PagingButton = ({ text, isDisabled, changePage }: PagingButtonProps) => (
     disabled={isDisabled}>
     {text}
   </button>
+)
+
+interface PagingTextProps {
+  start: number
+  end: number
+  total: number
+}
+
+const PagingText = ({ start, end, total }: PagingTextProps) => (
+  <p className='text-base font-light text-[var(--color-level-one)]'>
+    Mostrando: <b className='font-semibold'>{start} - {end}</b> de <b className='font-semibold'>{total}</b>
+  </p>
 )

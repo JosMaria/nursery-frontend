@@ -41,14 +41,16 @@ export const CatalogPage = () => {
       <ClassificationNavbar changeClassification={changeClassification} />
       {
         infoPage.empty ? <EmptyContent /> : (
-          <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
-            {
-              products.map(product => <CardProduct key={product.id} productResponseDTO={product} />)
-            }
-          </div>
+          <>
+            <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
+              {
+                products.map(product => <CardProduct key={product.id} productResponseDTO={product} />)
+              }
+            </div>
+            <PaginationSection infoPage={infoPage} prevPage={prevPage} nextPage={nextPage} />
+          </>
         )
       }
-      <PaginationSection infoPage={infoPage} prevPage={prevPage} nextPage={nextPage} />
     </section>
   )
 }

@@ -8,20 +8,14 @@ interface PaginationSectionProps {
 
 export const PaginationSection = ({ infoPage, prevPage, nextPage }: PaginationSectionProps) => (
 	<div className='flex justify-between items-center'>
-		<p className='text-sm font-normal text-[var(--color-level-one)]'>
-			Mostrando: {(infoPage.number * infoPage.size) + 1} - {(infoPage.number * infoPage.size) + infoPage.numberOfElements} de {infoPage.totalElements}
-		</p>
+		<PagingText
+			start={(infoPage.number * infoPage.size) + 1}
+			end={(infoPage.number * infoPage.size) + infoPage.numberOfElements}
+			total={infoPage.totalElements}
+		/>
 		<div className='flex'>
-			<PagingButton
-				text='<'
-				isDisabled={infoPage.empty || infoPage.first}
-				changePage={prevPage}
-			/>
-			<PagingButton
-				text='>'
-				isDisabled={infoPage.empty || infoPage.last}
-				changePage={nextPage}
-			/>
+			<PagingButton text='<' isDisabled={infoPage.first} changePage={prevPage} />
+			<PagingButton text='>' isDisabled={infoPage.last} changePage={nextPage} />
 		</div>
 	</div>
 )
@@ -43,4 +37,16 @@ const PagingButton = ({ text, isDisabled, changePage }: PagingButtonProps) => (
 		disabled={isDisabled}>
 		{text}
 	</button>
+)
+
+interface PagingTextProps {
+	start: number
+	end: number
+	total: number
+}
+
+const PagingText = ({ start, end, total }: PagingTextProps) => (
+	<p className='text-base font-light text-[var(--color-level-one)]'>
+		Mostrando: <b className='font-semibold'>{start} - {end}</b> de <b className='font-semibold'>{total}</b>
+	</p>
 )

@@ -33,9 +33,14 @@ export const ListPage = () => {
 
 	return (
 		<div className='flex flex-col gap-5 justify-center p-4 w-2/3'>
-			<Admin />
-			<Table items={items} />
-			<PaginationSection infoPage={infoPage} prevPage={prevPage} nextPage={nextPage} />
+			<Admin />	
+			{
+				!infoPage.empty && 
+				<>
+					<Table items={items} />
+					<PaginationSection infoPage={infoPage} prevPage={prevPage} nextPage={nextPage} />
+				</>
+			}
 		</div>
 	)
 }
