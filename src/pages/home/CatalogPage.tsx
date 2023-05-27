@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
 import { Classification, Page, ProductResponseDTO } from '../../types';
-import { CardProduct, ClassificationNavbar, PaginationSection } from './components';
+import { CardProduct, ClassificationNavbar, PaginationSection, Test } from './components';
 import { fetchByClassificationProducts } from '../../services';
 import { EmptyContentPlant } from '../../components';
 
 const infoPageDefault = {
   totalElements: 0,
-	totalPages: 0,
-	last: false,
-	size: 0,
-	number: 0,
-	numberOfElements: 0,
-	first: false,
-	empty: false
+  totalPages: 0,
+  last: false,
+  size: 0,
+  number: 0,
+  numberOfElements: 0,
+  first: false,
+  empty: false
 }
 
 export const CatalogPage = () => {
@@ -52,6 +52,7 @@ export const CatalogPage = () => {
           </>
         )
       }
+      <Test />
     </section>
   )
 }
