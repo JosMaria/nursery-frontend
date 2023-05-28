@@ -10,7 +10,7 @@ import { AxiosInstanceConfig } from '../../types';
  */
 export function createInstance({ instanceURL, ...rest }: AxiosInstanceConfig) {
 	const baseURL = `${API_URL}${instanceURL}`;
-	const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb25zdWVsbyIsImlhdCI6MTY4NTEzMzY3OCwiZXhwIjoxNjg1MjIwMDc4fQ.g3zmaS46LBEw6bMkIHMwLa7hv9hIlzdZtsois7drNMk';
+	const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb25zdWVsbyIsImlhdCI6MTY4NTMwNzY0MiwiZXhwIjoxNjg1Mzk0MDQyfQ.V8MsigG6bnwCRC2kmiqwW0-qAxzAvxMqNATr2IY5kNQ';
 
 	return axios.create({
 		baseURL,

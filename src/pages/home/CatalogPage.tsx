@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Classification, Page, ProductResponseDTO } from '../../types';
-import { CardProduct, ClassificationNavbar, PaginationSection, Test } from './components';
+import { CardProduct, ClassificationNavbar, PaginationSection } from './components';
 import { fetchByClassificationProducts } from '../../services';
 import { EmptyContentPlant } from '../../components';
 
@@ -34,6 +34,7 @@ export const CatalogPage = () => {
     setNumberPage(0);
   }
 
+  const goFirstPage = () => setNumberPage(0);
   const prevPage = () => setNumberPage(prev => prev - 1);
   const nextPage = () => setNumberPage(prev => prev + 1);
 
@@ -48,11 +49,15 @@ export const CatalogPage = () => {
                 products.map(product => <CardProduct key={product.id} productResponseDTO={product} />)
               }
             </div>
-            <PaginationSection infoPage={infoPage} prevPage={prevPage} nextPage={nextPage} />
+            <PaginationSection 
+              infoPage={infoPage} 
+              goFirstPage={goFirstPage}
+              prevPage={prevPage} 
+              nextPage={nextPage} 
+            />
           </>
         )
       }
-      <Test />
     </section>
   )
 }

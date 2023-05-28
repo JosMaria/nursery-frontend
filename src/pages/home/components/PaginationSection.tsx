@@ -1,43 +1,52 @@
+import { HiOutlineArrowLongRight, HiOutlineArrowLongLeft } from 'react-icons/hi2';
+import { BiArrowToLeft } from "react-icons/bi";
 import { Page } from '../../../types';
 
 interface PaginationSectionProps {
   infoPage: Page
+  goFirstPage: () => void
   prevPage: () => void
   nextPage: () => void
 }
 
-const styleDefaultButton = 'font-medium text-lg p-3 border border-[var(--color-level-three)] rounded-md';
-const bgEnabled = 'bg-[var(--color-level-two)] hover:bg-[var(--color-level-three)]';
-const bgDisabled = 'bg-[var(--color-level-three)]';
+export const PaginationSection = ({ infoPage, goFirstPage, prevPage, nextPage }: PaginationSectionProps) => {
+  return (
+    <section className='w-full'>
+      <PagingText start={0} end={0} total={0} />
+      <div className='grid grid-cols-3 place-items-center gap-5 pb-3'>
+        
+        <button 
+          className='flex text-[var(--color-level-one)]'
+          disabled={infoPage.number <= 1}
+          onClick={goFirstPage}>
+          <BiArrowToLeft size={'1.5em'} color='var(--color-level-one)' />
+          <p className='font-medium'>Ir a la p&aacute;gina 1</p>
+        </button>
 
-export const PaginationSection = ({ infoPage, prevPage, nextPage }: PaginationSectionProps) => (
-  <div className='flex justify-between items-center w-full px-16 pb-5'>
-    <PagingText
-      start={(infoPage.number * infoPage.size) + 1}
-      end={(infoPage.number * infoPage.size) + infoPage.numberOfElements}
-      total={infoPage.totalElements}
-    />
-    <div className='flex gap-5'>
-      <PagingButton text='Anterior' isDisabled={infoPage.first} changePage={prevPage} />
-      <PagingButton text='Siguiente' isDisabled={infoPage.last} changePage={nextPage} />
-    </div>
-  </div>
-)
+        <div className='flex gap-5'>
+          <button 
+            className='font-medium flex items-center gap-3 py-2 px-5 rounded-lg border-[0.2em] border-[var(--color-level-six)] bg-[var(--color-level-two)] hover:bg-[var(--color-level-three)]'
+            disabled={infoPage.first}
+            onClick={prevPage}>
+            <HiOutlineArrowLongLeft size={'1.5em'} color='black' />
+          </button>
 
-interface PagingButtonProps {
-  text: string
-  isDisabled: boolean
-  changePage: () => void
+          <button 
+            className='font-medium flex items-center gap-3 py-2 px-5 rounded-lg text-[var(--color-level-one)] bg-[var(--color-level-seven)] hover:bg-[var(--color-level-six)]'
+            disabled={infoPage.last}
+            onClick={nextPage}>
+            <p>Siguiente</p>
+            <HiOutlineArrowLongRight size={'1.5em'} color='var(--color-level-one)' />
+          </button>
+
+        </div>
+        <p className='flex text-[var(--color-level-one)] font-light'>
+          P&aacute;gina {infoPage.number} de {infoPage.totalPages - 1}
+        </p>
+      </div>
+    </section>
+  )
 }
-
-const PagingButton = ({ text, isDisabled, changePage }: PagingButtonProps) => (
-  <button
-    className={`${styleDefaultButton} ${isDisabled ? bgDisabled : bgEnabled}`}
-    onClick={changePage}
-    disabled={isDisabled}>
-    {text}
-  </button>
-)
 
 interface PagingTextProps {
   start: number
@@ -46,7 +55,7 @@ interface PagingTextProps {
 }
 
 const PagingText = ({ start, end, total }: PagingTextProps) => (
-  <p className='text-base font-light text-[var(--color-level-one)]'>
+  <p className='ml-10 text-base font-light text-[var(--color-level-one)]'>
     Mostrando: <b className='font-semibold'>{start} - {end}</b> de <b className='font-semibold'>{total}</b>
   </p>
 )
