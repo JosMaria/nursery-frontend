@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ItemToList, Page } from '../../types'
 import { fetchAllItemsToList } from '../../services';
 import { Admin, PaginationSection, Table } from './components';
+import { EmptyContentPlant } from '../../components';
 
 const infoPageDefault = {
 	totalElements: 0,
@@ -27,7 +28,6 @@ export const ListPage = () => {
 			});
 	}, [numberPage]);
 
-
 	const prevPage = () => setNumberPage(prev => prev - 1);
 	const nextPage = () => setNumberPage(prev => prev + 1);
 
@@ -35,11 +35,11 @@ export const ListPage = () => {
 		<div className='flex flex-col gap-5 justify-center p-4 w-2/3'>
 			<Admin />	
 			{
-				!infoPage.empty && 
-				<>
-					<Table items={items} />
-					<PaginationSection infoPage={infoPage} prevPage={prevPage} nextPage={nextPage} />
-				</>
+				infoPage.empty ? <EmptyContentPlant /> : 
+					<>
+						<Table items={items} />
+						<PaginationSection infoPage={infoPage} prevPage={prevPage} nextPage={nextPage} />
+					</>
 			}
 		</div>
 	)

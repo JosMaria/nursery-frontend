@@ -1,5 +1,5 @@
 import { createInstance } from './http';
-import { CreateNewsDTO, NewsResponseDTO } from '../types';
+import { CreateNewsDTO, NewsResponseDTO, PageNewsResponseDTO } from '../types';
 
 /**
  * Axios instance that will allow requests to be made to the API related to the News.
@@ -20,7 +20,7 @@ export const createNews = async (createNewsDTO: CreateNewsDTO): Promise<NewsResp
  * Function that allows you to fetch all news.
  * @returns { Promise<Array<import('../types').NewsResponseDTO>> } all news.
  */
-export const fetchAllNews = async (): Promise<Array<NewsResponseDTO>> => {
+export const fetchAllNews = async (): Promise<PageNewsResponseDTO> => {
     const { data } = await newsService.get('');
     return data;
 }
