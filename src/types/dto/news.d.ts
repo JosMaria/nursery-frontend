@@ -9,3 +9,7 @@ export interface NewsResponseDTO {
   title: string
   description: string
 }
+
+export interface PageNewsResponseDTO {
+  content: Array<NewsResponseDTO>
+}
