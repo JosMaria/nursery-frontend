@@ -11,7 +11,11 @@ interface PaginationSectionProps {
 
 export const PaginationSection = ({ infoPage, goFirstPage, prevPage, nextPage }: PaginationSectionProps) => (
   <section className='w-full'>
-    <PagingText start={0} end={0} total={0} />
+    <PagingText 
+      start={(infoPage.number * infoPage.size) + 1} 
+      end={(infoPage.number * infoPage.size) + infoPage.numberOfElements} 
+      total={infoPage.totalElements} 
+    />
     <div className='grid grid-cols-3 place-items-center gap-5 pb-3'>
       <button
         className={`${infoPage.number < 1 ? 'invisible' : 'flex text-[var(--color-level-one)]'}`}
@@ -66,8 +70,8 @@ interface PagingInfoProps {
 const PagingInfo = ({ numberPage, totalPages }: PagingInfoProps) => (
   <p className='flex text-[var(--color-level-one)] font-light'>
     P&aacute;gina
-    <b className='font-semibold'>&nbsp;{numberPage}</b>
+    <b className='font-semibold'>&nbsp;{numberPage + 1}</b>
     &nbsp;de&nbsp;
-    <b className='font-semibold'>{totalPages - 1}</b>
+    <b className='font-semibold'>{totalPages}</b>
   </p>
 )
