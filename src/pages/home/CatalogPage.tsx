@@ -44,16 +44,12 @@ export const CatalogPage = () => {
       {
         infoPage.empty ? <EmptyContentPlant /> : (
           <>
-            <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
-              {
-                products.map(product => <CardProduct key={product.id} productResponseDTO={product} />)
-              }
-            </div>
-            <PaginationSection 
-              infoPage={infoPage} 
+            <SectionCardProduct products={products} />
+            <PaginationSection
+              infoPage={infoPage}
               goFirstPage={goFirstPage}
-              prevPage={prevPage} 
-              nextPage={nextPage} 
+              prevPage={prevPage}
+              nextPage={nextPage}
             />
           </>
         )
@@ -61,3 +57,20 @@ export const CatalogPage = () => {
     </section>
   )
 }
+
+interface SectionCardProductProps {
+  products: Array<ProductResponseDTO>
+}
+
+const SectionCardProduct = ({ products }: SectionCardProductProps) => (
+  <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
+    {
+      products.map(product => 
+        <CardProduct 
+          key={product.id} 
+          productResponseDTO={product} 
+        />
+      )
+    }
+  </div>
+)
