@@ -22,15 +22,7 @@ export const NewsPage = () => {
             alt='empty_content_news'
           />
           :
-          news.map(news =>
-            <CardNews
-              key={news.id}
-              id={news.id}
-              title={news.title}
-              description={news.description}
-              urlImage={news.urlImage}
-            />
-          )
+          news.map(news => <CardNews key={news.id} newsResponseDTO={news} />)
       }
     </section>
   )
