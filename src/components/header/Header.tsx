@@ -8,14 +8,14 @@ export const Header = () => (
   <header className='bg-[var(--color-level-seven)] flex justify-between items-center px-10 py-6'>
     <Logo />
     <Navbar />
-    <NavLink to='#'>
-      <FaUserCircle size='2.5em' color='white' />
+    <NavLink to='#' className='flex-1 flex justify-end '>
+      <FaUserCircle size='2.5em' color='white'/>
     </NavLink>
   </header>
 )
 
 const Logo = () => (
-  <div className='flex items-center gap-2'>
+  <div className='flex items-center gap-2 flex-1'>
     <img 
       src='https://images.vexels.com/media/users/3/148692/isolated/preview/4ff28c6516ef2c46843f69010116d898-maceta-con-im--genes-predise--adas-de-la-planta-by-vexels.png' 
       className='w-12' 
@@ -25,7 +25,7 @@ const Logo = () => (
 )
 
 const Navbar = () => (
-  <nav>
+  <nav className='flex-1 flex justify-center'>
       <NavLink className={({ isActive }) => isActive ? `${style} ${styleSelected}` : `${style}`}
         to={'/'}>
         Inicio
