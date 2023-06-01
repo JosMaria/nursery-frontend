@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Classification, Page, ProductResponseDTO } from '../../types';
 import { CardProduct, ClassificationNavbar, PaginationSection } from './components';
 import { fetchByClassificationProducts } from '../../services';
-import { EmptyContentPlant } from '../../components';
+import { EmptyContent } from '../../components';
 
 const infoPageDefault = {
   totalElements: 0,
@@ -42,7 +42,13 @@ export const CatalogPage = () => {
     <section className='w-full flex flex-col justify-between items-center'>
       <ClassificationNavbar changeClassification={changeClassification} />
       {
-        infoPage.empty ? <EmptyContentPlant /> : (
+        infoPage.empty ?
+          <EmptyContent
+            message='A&uacute;n no tenemos plantas que mostrar'
+            pathImage='src/assets/no-content-plants.png'
+            alt='empty_content_plants'
+          />
+          :
           <>
             <SectionCardProduct products={products} />
             <PaginationSection
@@ -52,7 +58,6 @@ export const CatalogPage = () => {
               nextPage={nextPage}
             />
           </>
-        )
       }
     </section>
   )
@@ -65,10 +70,10 @@ interface SectionCardProductProps {
 const SectionCardProduct = ({ products }: SectionCardProductProps) => (
   <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
     {
-      products.map(product => 
-        <CardProduct 
-          key={product.id} 
-          productResponseDTO={product} 
+      products.map(product =>
+        <CardProduct
+          key={product.id}
+          productResponseDTO={product}
         />
       )
     }
