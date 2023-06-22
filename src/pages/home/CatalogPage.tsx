@@ -4,16 +4,6 @@ import { CardProduct, ClassificationNavbar, PaginationSection } from './componen
 import { fetchByClassificationProducts } from '../../services';
 import { EmptyContent } from '../../components';
 
-const enum REDUCER_ACTION_TYPE {
-  FIRST_PAGE,
-  PREV_PAGE,
-  NEXT_PAGE
-}
-
-type ReducerAction = {
-  type: REDUCER_ACTION_TYPE
-}
-
 const infoPageDefault = {
   totalElements: 0,
   totalPages: 0,

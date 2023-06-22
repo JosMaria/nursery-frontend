@@ -1,23 +1,20 @@
-export type PlantStatusType = 'AVAILABLE' | 'IN_CONSERVATION' | 'NON_EXISTENT'
-
-const enum PLANT_STATUS {
+export const enum PLANT_STATUS {
   AVAILABLE,
   IN_CONSERVATION,
   NON_EXISTENT
-} 
-
-export const enum PLANT_CLASSIFICATION {
-  ORNAMENTAL,
-  FOREST,
-  INDUSTRIAL,
-  ALIMENTARY,
-  MEDICINAL,
-  EXOTIC,
-  CACTUS,
-  FRUITFUL,
-  GRASS,
-  SUCCULENT
 }
+
+type PlantClassificationType =
+  'ORNAMENTAL' |
+  'FOREST' |
+  'INDUSTRIAL' |
+  'ALIMENTARY' |
+  'MEDICINAL' |
+  'EXOTIC' |
+  'CACTUS' |
+  'FRUITFUL' |
+  'GRASS' |
+  'SUCCULENT'
 
 export interface ProductResponseDTO {
   id: number,
@@ -40,3 +37,5 @@ export interface Page {
   first: boolean
   last: boolean
 }
+
+export type ClassificationSelectedType = 'ALL' | PlantClassificationType
