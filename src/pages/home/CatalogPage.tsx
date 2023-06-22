@@ -4,6 +4,30 @@ import { CardProduct, ClassificationNavbar, PaginationSection } from './componen
 import { fetchByClassificationProducts } from '../../services';
 import { EmptyContent } from '../../components';
 
+type PlantStatusType = 'AVAILABLE' | 'IN_CONSERVATION' | 'NON_EXISTENT'
+
+interface ProductResponse {
+  id: number,
+  commonName: string
+  scientificName: string
+  scientistSurnameInitial: string
+  status: PlantStatusType
+  family: string
+  urlPicture: Array<string>
+}
+
+interface MyPage {
+  content: Array<ProductResponse>
+  number: number
+  totalElements: number
+  totalPages: number
+  size: number
+  numberOfElements: number
+  empty: boolean
+  first: boolean
+  last: boolean
+}
+
 const infoPageDefault = {
   totalElements: 0,
   totalPages: 0,
