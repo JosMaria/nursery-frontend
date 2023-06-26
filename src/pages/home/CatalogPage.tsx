@@ -3,6 +3,7 @@ import { Classification, Page, ProductResponseDTO } from '../../types';
 import { CardProduct, ClassificationNavbar, PaginationSection } from './components';
 import { fetchByClassificationProducts } from '../../services';
 import { EmptyContent } from '../../components';
+import { CatalogProvider } from './contexts';
 
 const infoPageDefault = {
   totalElements: 0,
@@ -20,6 +21,7 @@ export const CatalogPage = () => {
   const [numberPage, setNumberPage] = useState(0);
   const [classification, setClassification] = useState<Classification>('ALL');
   const [infoPage, setInfoPage] = useState<Page>(infoPageDefault);
+
 
   useEffect(() => {
     fetchByClassificationProducts(classification, numberPage)
@@ -39,27 +41,29 @@ export const CatalogPage = () => {
   const nextPage = () => setNumberPage(prev => prev + 1);
 
   return (
-    <section className='w-full flex flex-col justify-between items-center'>
-      <ClassificationNavbar changeClassification={changeClassification} />
-      {
-        infoPage.empty ?
-          <EmptyContent
-            message='A&uacute;n no tenemos plantas que mostrar'
-            pathImage='src/assets/no-content-plants.png'
-            alt='empty_content_plants'
-          />
-          :
-          <>
-            <SectionCardProduct products={products} />
-            <PaginationSection
-              infoPage={infoPage}
-              goFirstPage={goFirstPage}
-              prevPage={prevPage}
-              nextPage={nextPage}
+    <CatalogProvider>
+      <section className='w-full flex flex-col justify-between items-center'>
+        <ClassificationNavbar changeClassification={changeClassification} />
+        {
+          infoPage.empty ?
+            <EmptyContent
+              message='A&uacute;n no tenemos plantas que mostrar'
+              pathImage='src/assets/no-content-plants.png'
+              alt='empty_content_plants'
             />
-          </>
-      }
-    </section>
+            :
+            <>
+              <SectionCardProduct products={products} />
+              <PaginationSection
+                infoPage={infoPage}
+                goFirstPage={goFirstPage}
+                prevPage={prevPage}
+                nextPage={nextPage}
+              />
+            </>
+        }
+      </section>
+    </CatalogProvider>
   )
 }
 
