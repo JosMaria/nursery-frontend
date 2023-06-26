@@ -6,7 +6,7 @@ type CatalogStateType = {
   page: Page
 }
 
-export const CatalogContext = createContext<{ counter: number, setCounter: React.Dispatch<React.SetStateAction<number>> }>({
+const CatalogContext = createContext<{ counter: number, setCounter: React.Dispatch<React.SetStateAction<number>> }>({
   counter: 0,
   setCounter: () => {}
 })

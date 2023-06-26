@@ -9,7 +9,7 @@ interface ClassificationNavbarProps {
 export const ClassificationNavbar = ({ changeClassification }: ClassificationNavbarProps) => {
   const [classifications, setClassifications] = useState<Array<Classification>>([]);
   const [selected, setSelected] = useState<Classification>('ALL');
-
+  
   useEffect(() => {
     fetchAllClassifications()
       .then(response => setClassifications(response));
