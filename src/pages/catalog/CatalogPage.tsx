@@ -1,7 +1,8 @@
-import { CatalogContent } from "./components"
+import { CatalogContent } from './components'
+import { CatalogProvider } from './contexts'
 
-export const CatalogPage = () => {
-  return (
+export const CatalogPage = () => (
+  <CatalogProvider>
     <CatalogContent />
-  )
-}
+  </CatalogProvider>
+)
