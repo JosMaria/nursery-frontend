@@ -9,11 +9,11 @@ const instance = axios.create({
 /**
  * Retrieve paginated products based on the specified page number and classification.
  * 
- * @param {number} numberPage - The page number to retrieve products from. Defaults to 0 if not provided.
  * @param {ClassificationSelectedType} classification - The classification of the products to retrieve.
+ * @param {number} numberPage - The page number to retrieve products from. Defaults to 0 if not provided.
  * @returns {Promise<Page>} A Promise that resolves to the retrieved page of products.
  */
-export const getPaginatedProducts = async (numberPage: number = 0, classification: ClassificationSelectedType): Promise<Page> => {
+export const getPaginatedProducts = async (classification: ClassificationSelectedType, numberPage: number = 0): Promise<Page> => {
   const path = classification !== 'ALL' ? `/classifications/${classification}` : ''
   const { data } = await instance.get(path, {
     params: {

@@ -1,24 +1,47 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState } from 'react'
+import { ClassificationSelectedType, Page } from '../types'
 
-type CounterType = {
-  counter: number,
-  setCounter: React.Dispatch<React.SetStateAction<number>>
+interface CatalogState {
+  classification: ClassificationSelectedType
+  page: Page
 }
 
-const CatalogContext = createContext<CounterType>({
-  counter: 0,
-  setCounter: () => { }
-})
+const initialCatalog: CatalogState = {
+  classification: 'ALL',
+  page: {
+    content: [],
+    number: 0,
+    totalElements: 0,
+    totalPages: 0,
+    size: 0,
+    numberOfElements: 0,
+    empty: true,
+    first: true,
+    last: true
+  }
+}
+
+type CatalogContextType = {
+  catalog: CatalogState
+  setCatalog: React.Dispatch<React.SetStateAction<CatalogState>>
+}
+
+const initialCatalogContext: CatalogContextType = {
+  catalog: initialCatalog,
+  setCatalog: () => { }
+}
+
+const CatalogContext = createContext<CatalogContextType>(initialCatalogContext)
 
 interface CatalogProviderProps {
   children: JSX.Element | JSX.Element[]
 }
 
 export const CatalogProvider = ({ children }: CatalogProviderProps): JSX.Element => {
-  const [counter, setCounter] = useState(0)
+  const [catalog, setCatalog] = useState(initialCatalog)
 
   return (
-    <CatalogContext.Provider value={{ counter, setCounter }}>
+    <CatalogContext.Provider value={{ catalog, setCatalog }}>
       {children}
     </CatalogContext.Provider>
   )
