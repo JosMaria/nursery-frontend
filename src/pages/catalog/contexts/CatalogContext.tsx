@@ -61,5 +61,29 @@ export const useCatalogContext = () => {
       .catch(e => console.log(e))
   }
 
-  return { catalog: context.catalog, changeClassification};
+  const firstPage = () => {
+    const { catalog: { classification }, setCatalog } = context
+    getPaginatedProducts(classification, 0)
+      .then(page => setCatalog(prev => ({ ...prev, page })))
+  }
+
+  const prevPage = () => {
+    const { catalog: { classification, page }, setCatalog } = context
+    getPaginatedProducts(classification, page.number + 1)
+      .then(page => setCatalog(prev => ({ ...prev, page })))
+  }
+
+  const nextPage = () => {
+    const { catalog: { classification, page }, setCatalog } = context
+    getPaginatedProducts(classification, page.number + 1)
+      .then(page => setCatalog(prev => ({ ...prev, page })))
+  }
+
+  return {
+    catalog: context.catalog,
+    changeClassification,
+    firstPage,
+    prevPage,
+    nextPage
+  };
 }
