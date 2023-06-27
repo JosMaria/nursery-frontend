@@ -27,7 +27,7 @@ export interface ProductResponseDTO {
 }
 
 export interface Page {
-  content: Array<ProductResponse>
+  content: Array<ProductResponseDTO>
   number: number
   totalElements: number
   totalPages: number

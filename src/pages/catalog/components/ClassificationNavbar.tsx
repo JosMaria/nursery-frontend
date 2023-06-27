@@ -1,21 +1,10 @@
 import { useCatalogContext } from '../contexts'
-import { getPaginatedProducts } from '../services'
 import { ClassificationSelectedType } from '../types'
 
 const classifications: ClassificationSelectedType[] = ['ALIMENTARY', 'ALL', 'CACTUS', 'EXOTIC', 'FOREST', 'FRUITFUL', 'GRASS', 'INDUSTRIAL', 'MEDICINAL', 'ORNAMENTAL', 'SUCCULENT']
 
 export const ClassificationNavbar = () => {
-
-  const {setCatalog} = useCatalogContext()
-
-  const changeClassification = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    const classificationSelected = e.currentTarget.textContent as ClassificationSelectedType
-    getPaginatedProducts(classificationSelected)
-      .then(data => setCatalog({ 
-        classification: classificationSelected, 
-        page: data  
-      }))
-  }
+  const { changeClassification } = useCatalogContext()
 
   return (
     <ul className='flex cursor-pointer bg-[var(--color-level-six)] text-[var(--color-level-one)]'>
@@ -24,7 +13,7 @@ export const ClassificationNavbar = () => {
           <li
             key={index}
             className='flex-1 text-center p-4 hover:bg-[var(--color-level-five)]'
-            onClick={changeClassification}
+            onClick={(e) => changeClassification(e.currentTarget.textContent as ClassificationSelectedType)}
           >
             {classification}
           </li>

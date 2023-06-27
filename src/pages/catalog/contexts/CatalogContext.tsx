@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import { ClassificationSelectedType, Page } from '../types'
+import { getPaginatedProducts } from '../services'
 
 interface CatalogState {
   classification: ClassificationSelectedType
@@ -54,5 +55,11 @@ export const useCatalogContext = () => {
     throw new Error('CatalogContext must be used within a CatalogProvider')
   }
 
-  return context;
+  const changeClassification = (classification: ClassificationSelectedType) => {
+    getPaginatedProducts(classification)
+      .then(page => context.setCatalog({ classification, page }))
+      .catch(e => console.log(e))
+  }
+
+  return { catalog: context.catalog, changeClassification};
 }
