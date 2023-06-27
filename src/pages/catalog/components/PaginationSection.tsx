@@ -53,7 +53,6 @@ export const PaginationSection = () => {
         <PagingInfo numberPage={number} totalPages={totalPages} />
       </div>
     </section>
-
   )
 }
 

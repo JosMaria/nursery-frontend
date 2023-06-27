@@ -8,11 +8,7 @@ export const ProductList = () => {
   return (
     <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
       {
-        page.content.map(product => (
-          <ProductItem
-            key={product.id}
-            product={product} />)
-        )
+        page.content.map(product => (<ProductItem key={product.id} product={product} />))
       }
     </div>
   )
