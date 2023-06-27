@@ -1,3 +1,4 @@
+import { useCatalogContext } from '../contexts'
 import { getPaginatedProducts } from '../services'
 import { ClassificationSelectedType } from '../types'
 
@@ -5,10 +6,15 @@ const classifications: ClassificationSelectedType[] = ['ALIMENTARY', 'ALL', 'CAC
 
 export const ClassificationNavbar = () => {
 
+  const {setCatalog} = useCatalogContext()
+
   const changeClassification = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const classificationSelected = e.currentTarget.textContent as ClassificationSelectedType
-    console.log(classificationSelected)
     getPaginatedProducts(classificationSelected)
+      .then(data => setCatalog({ 
+        classification: classificationSelected, 
+        page: data  
+      }))
   }
 
   return (

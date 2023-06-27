@@ -3,7 +3,9 @@ import { ClassificationSelectedType, Page } from '../types'
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080/api/v1/products',
-  //headers: { 'X-Custom-Header': 'foobar' }
+  headers: { 
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb25zdWVsbyIsImlhdCI6MTY4Nzg2OTQ4MywiZXhwIjoxNjg3OTU1ODgzfQ.u8830A2psWlyg_KFj0OXRR81rL9h_TJ_ejBdpnY5_gg' 
+  }
 })
 
 /**
