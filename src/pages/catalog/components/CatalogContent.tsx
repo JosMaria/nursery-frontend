@@ -1,11 +1,11 @@
 import { EmptyContent } from '../../../components'
-import { useCatalogContext } from '../contexts'
+import { useCatalogState } from '../hooks'
 import { ClassificationNavbar } from './ClassificationNavbar'
 import { PaginationSection } from './PaginationSection'
 import { ProductList } from './ProductList'
 
 export const CatalogContent = () => {
-  const { catalog: { page } } = useCatalogContext()
+  const { page } = useCatalogState()
 
   return (
     <section>

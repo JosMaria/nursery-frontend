@@ -3,7 +3,6 @@ import { ItemToList, Page } from '../../types'
 import { fetchAllItemsToList } from '../../services';
 import { Admin, Table } from './components';
 import { EmptyContent } from '../../components';
-import { PaginationSection } from '../home/components';
 
 const infoPageDefault = {
 	totalElements: 0,
@@ -29,10 +28,6 @@ export const ListPage = () => {
 			});
 	}, [numberPage]);
 
-	const goFirstPage = () => setNumberPage(0);
-	const prevPage = () => setNumberPage(prev => prev - 1);
-	const nextPage = () => setNumberPage(prev => prev + 1);
-
 	return (
 		<div className='flex flex-col gap-5 justify-center p-4 w-2/3'>
 			<Admin />
@@ -46,12 +41,7 @@ export const ListPage = () => {
 					:
 					<>
 						<Table items={items} />
-						<PaginationSection
-							infoPage={infoPage}
-							goFirstPage={goFirstPage}
-							prevPage={prevPage}
-							nextPage={nextPage}
-						/>
+						
 					</>
 			}
 		</div>

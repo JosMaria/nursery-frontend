@@ -1,9 +1,12 @@
 import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from 'react-icons/hi2'
-import { useCatalogContext } from '../contexts'
 import { BiArrowToLeft } from 'react-icons/bi'
+import { useCatalogState, useChangePage } from '../hooks'
 
 export const PaginationSection = () => {
-  const { catalog: { page }, firstPage, nextPage, prevPage } = useCatalogContext()
+  const { firstPage, prevPage, nextPage } = useChangePage()
+  const { page, classification } = useCatalogState()
+  
+
   const {
     first: isFirst,
     last: isLast,
@@ -35,7 +38,7 @@ export const PaginationSection = () => {
           <PagingButton
             style='font-medium flex items-center gap-3 py-2 px-5 rounded-lg border-[0.2em] border-[var(--color-level-six)] bg-[var(--color-level-two)] hover:bg-[var(--color-level-three)]'
             isDisabled={isFirst}
-            functionality={prevPage}
+            functionality={() => prevPage(number)}
           >
             <HiOutlineArrowLongLeft size={'1.5em'} color='black' />
           </PagingButton>
@@ -43,7 +46,7 @@ export const PaginationSection = () => {
           <PagingButton
             style='font-medium flex items-center gap-3 py-2 px-5 rounded-lg text-[var(--color-level-one)] bg-[var(--color-level-seven)] hover:bg-[var(--color-level-six)]'
             isDisabled={isLast}
-            functionality={nextPage}
+            functionality={() => nextPage(number)}
           >
             <p>Siguiente</p>
             <HiOutlineArrowLongRight size={'1.5em'} color='var(--color-level-one)' />

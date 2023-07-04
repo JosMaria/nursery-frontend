@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom'
-import { useCatalogContext } from '../contexts'
 import { ProductResponseDTO } from '../types'
+import { useCatalogState } from '../hooks'
 
 export const ProductList = () => {
-  const { catalog: { page } } = useCatalogContext()
+  const { page: { content } } = useCatalogState()
 
   return (
     <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
       {
-        page.content.map(product => (<ProductItem key={product.id} product={product} />))
+        content.map(product => (
+          <ProductItem
+            key={product.id}
+            product={product}
+          />)
+        )
       }
     </div>
   )

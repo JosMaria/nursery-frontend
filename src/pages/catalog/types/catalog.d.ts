@@ -26,7 +26,7 @@ export interface ProductResponseDTO {
   urlPicture: Array<string>
 }
 
-export interface Page {
+export interface PageDTO {
   content: Array<ProductResponseDTO>
   number: number
   totalElements: number
@@ -37,5 +37,3 @@ export interface Page {
   first: boolean
   last: boolean
 }
-
-export type ClassificationSelectedType = 'ALL' | PlantClassificationType

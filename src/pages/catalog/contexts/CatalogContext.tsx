@@ -1,14 +1,14 @@
-import { createContext, useContext, useState } from 'react'
-import { ClassificationSelectedType, Page } from '../types'
+import { ReactElement, createContext, useCallback, useEffect, useReducer, useState } from 'react'
 import { getPaginatedProducts } from '../services'
+import { PageDTO, PlantClassificationType } from '../types'
 
-interface CatalogState {
-  classification: ClassificationSelectedType
-  page: Page
+type CatalogStateType = {
+  classification: PlantClassificationType | null
+  page: PageDTO
 }
 
-const initialCatalog: CatalogState = {
-  classification: 'ALL',
+const initialCatalogState: CatalogStateType = {
+  classification: null,
   page: {
     content: [],
     number: 0,
@@ -22,68 +22,156 @@ const initialCatalog: CatalogState = {
   }
 }
 
-type CatalogContextType = {
-  catalog: CatalogState
-  setCatalog: React.Dispatch<React.SetStateAction<CatalogState>>
+const enum REDUCER_ACTION_TYPE {
+  CHANGE_CLASSIFICATION,
+  FIRST_PAGE,
+  PREV_PAGE,
+  NEXT_PAGE
 }
 
-const initialCatalogContext: CatalogContextType = {
-  catalog: initialCatalog,
-  setCatalog: () => { }
+type ReducerAction = {
+  type: REDUCER_ACTION_TYPE,
+  payload?: CatalogStateType
 }
 
-const CatalogContext = createContext<CatalogContextType>(initialCatalogContext)
+const reducer = (state: CatalogStateType, { type, payload }: ReducerAction): CatalogStateType => {
+  switch (type) {
+    case REDUCER_ACTION_TYPE.CHANGE_CLASSIFICATION: {
+      if (!payload)
+        throw new Error('payload missing in \'CHANGE_CLASSIFICATION\' action')
 
-interface CatalogProviderProps {
-  children: JSX.Element | JSX.Element[]
-}
+      return { ...state, ...payload }
+    }
 
-export const CatalogProvider = ({ children }: CatalogProviderProps): JSX.Element => {
-  const [catalog, setCatalog] = useState(initialCatalog)
+    case REDUCER_ACTION_TYPE.FIRST_PAGE: {
+      if (!payload)
+        throw new Error('payload missing in \'FIRST_PAGE\' action')
 
-  return (
-    <CatalogContext.Provider value={{ catalog, setCatalog }}>
-      {children}
-    </CatalogContext.Provider>
-  )
-}
+      const { classification } = state
+      const { page } = payload
 
-export const useCatalogContext = () => {
-  const context = useContext(CatalogContext)
+      return {
+        ...state,
+        classification,
+        page
+      }
+    }
 
-  if (context === undefined) {
-    throw new Error('CatalogContext must be used within a CatalogProvider')
+    case REDUCER_ACTION_TYPE.PREV_PAGE: {
+      if (!payload)
+        throw new Error('payload missing in \'PREV_PAGE\' action')
+
+      return { ...state, ...payload }
+    }
+
+    case REDUCER_ACTION_TYPE.NEXT_PAGE: {
+      if (!payload)
+        throw new Error('payload missing in \'NEXT_PAGE\' action');
+
+      return { ...state, ...payload }
+    }
+
+    default:
+      throw new Error(`unidentified reducer action type: '${type}'`)
   }
+}
 
-  const changeClassification = (classification: ClassificationSelectedType) => {
+const useCatalogContext = (initCatalogState: CatalogStateType) => {
+  const [state, dispatch] = useReducer(reducer, initCatalogState)
+
+  const changeClassification = useCallback((classification: PlantClassificationType | null) => {
     getPaginatedProducts(classification)
-      .then(page => context.setCatalog({ classification, page }))
-      .catch(e => console.log(e))
-  }
+      .then(pageDTO => dispatch({
+        type: REDUCER_ACTION_TYPE.CHANGE_CLASSIFICATION,
+        payload: {
+          classification,
+          page: pageDTO
+        }
+      }))
 
-  const firstPage = () => {
-    const { catalog: { classification }, setCatalog } = context
+  }, [])
+
+  const firstPage = useCallback(() => {
+    const { classification } = state
+
     getPaginatedProducts(classification, 0)
-      .then(page => setCatalog(prev => ({ ...prev, page })))
-  }
+      .then(pageDTO => dispatch({
+        type: REDUCER_ACTION_TYPE.FIRST_PAGE,
+        payload: {
+          classification,
+          page: pageDTO
+        }
+      }))
 
-  const prevPage = () => {
-    const { catalog: { classification, page }, setCatalog } = context
-    getPaginatedProducts(classification, page.number + 1)
-      .then(page => setCatalog(prev => ({ ...prev, page })))
-  }
+  }, [state.classification])
 
-  const nextPage = () => {
-    const { catalog: { classification, page }, setCatalog } = context
-    getPaginatedProducts(classification, page.number + 1)
-      .then(page => setCatalog(prev => ({ ...prev, page })))
-  }
+  const prevPage = useCallback((prevNumberPage: number) => {
+    const { classification } = state
+
+    getPaginatedProducts(classification, prevNumberPage - 1)
+      .then(pageDTO => dispatch({
+        type: REDUCER_ACTION_TYPE.PREV_PAGE,
+        payload: {
+          classification,
+          page: pageDTO
+        }
+      }))
+
+  }, [state.classification])
+
+  const nextPage = useCallback((nextNumberPage: number) => {
+    const { classification } = state
+
+    getPaginatedProducts(classification, nextNumberPage + 1)
+      .then(pageDTO => dispatch({
+        type: REDUCER_ACTION_TYPE.NEXT_PAGE,
+        payload: {
+          classification,
+          page: pageDTO
+        }
+      }))
+
+  }, [state.classification])
 
   return {
-    catalog: context.catalog,
+    state,
     changeClassification,
     firstPage,
     prevPage,
     nextPage
-  };
+  }
+}
+
+type UseCatalogContextType = ReturnType<typeof useCatalogContext>
+
+const initCatalogContextState: UseCatalogContextType = {
+  changeClassification: () => { },
+  firstPage: () => { },
+  prevPage: () => { },
+  nextPage: () => { },
+  state: initialCatalogState
+}
+
+export const CatalogContext = createContext<UseCatalogContextType>(initCatalogContextState)
+
+type ChildrenType = {
+  children?: ReactElement | ReactElement[]
+}
+
+export const CatalogProvider = ({ children }: ChildrenType): ReactElement => {
+  const [catalog, setCatalog] = useState<CatalogStateType>(initialCatalogState)
+
+  useEffect(() => {
+    getPaginatedProducts(null, 0)
+      .then(pageDTO => setCatalog({
+        classification: null,
+        page: pageDTO
+      }))
+  }, [])
+
+  return (
+    <CatalogContext.Provider value={useCatalogContext(catalog)}>
+      {children}
+    </CatalogContext.Provider>
+  )
 }
