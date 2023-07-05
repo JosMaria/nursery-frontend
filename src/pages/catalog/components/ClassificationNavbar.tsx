@@ -1,6 +1,7 @@
 import { useChangeClassification } from '../hooks'
 import { PlantClassificationType } from '../types'
 
+// TODO: remove this line
 const classifications: PlantClassificationType[] = ['ALIMENTARY', 'CACTUS', 'EXOTIC', 'FOREST', 'FRUITFUL', 'GRASS', 'INDUSTRIAL', 'MEDICINAL', 'ORNAMENTAL', 'SUCCULENT']
 
 export const ClassificationNavbar = () => {

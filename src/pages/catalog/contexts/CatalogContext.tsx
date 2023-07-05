@@ -155,7 +155,7 @@ const initCatalogContextState: UseCatalogContextType = {
 export const CatalogContext = createContext<UseCatalogContextType>(initCatalogContextState)
 
 type ChildrenType = {
-  children?: ReactElement | ReactElement[]
+  children?: ReactElement | Array<ReactElement>
 }
 
 export const CatalogProvider = ({ children }: ChildrenType): ReactElement => {

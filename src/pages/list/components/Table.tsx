@@ -5,6 +5,7 @@ interface TableProps {
   items: Array<ItemToList>
 }
 
+
 export const Table = ({ items }: TableProps) => (
   <table className='h-fit'>
     <thead className='text-sm bg-[var(--color-level-six)] text-[var(--color-level-one)]'>

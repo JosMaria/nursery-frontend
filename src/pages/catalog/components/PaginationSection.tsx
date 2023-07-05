@@ -60,7 +60,7 @@ export const PaginationSection = () => {
 }
 
 interface PagingButtonProps {
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | Array<JSX.Element>
   style: string
   isDisabled: boolean
   functionality: () => void
