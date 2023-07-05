@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { NewsResponseDTO } from '../../types';
 import { fetchAllNews } from '../../services';
 import { CardNews } from './components';
-import { EmptyContentNews } from '../../components';
+import { EmptyContent } from '../../components';
 
 export const NewsPage = () => {
   const [news, setNews] = useState<Array<NewsResponseDTO>>([]);
@@ -15,16 +15,14 @@ export const NewsPage = () => {
   return (
     <section className='w-2/3 flex flex-col items-center gap-5 p-5'>
       {
-        news.length === 0 ? <EmptyContentNews /> :
-          news.map(news =>
-            <CardNews
-              key={news.id}
-              id={news.id}
-              title={news.title}
-              description={news.description}
-              urlImage={news.urlImage}
-            />
-          )
+        news.length === 0 ?
+          <EmptyContent
+            message='A&uacute;n no tenemos novedades que mostrar'
+            pathImage='src/assets/no-content-news.png'
+            alt='empty_content_news'
+          />
+          :
+          news.map(news => <CardNews key={news.id} newsResponseDTO={news} />)
       }
     </section>
   )

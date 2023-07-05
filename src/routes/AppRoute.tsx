@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { ListPage, NewsPage, CatalogPage, SingleNews, SingleProduct, CreatePlantForm } from '../pages';
+import { ListPage, NewsPage, SingleNews, SingleProduct, CreatePlantForm, CatalogPage } from '../pages';
 import { Page } from '../pages/HomePage';
 import { CreateNewsForm } from '../pages/create-news-form';
 

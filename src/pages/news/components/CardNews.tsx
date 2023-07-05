@@ -1,26 +1,36 @@
 import { Link } from 'react-router-dom'
 import { NewsResponseDTO } from '../../../types'
 
-export const CardNews = ({ id, title, description, urlImage }: NewsResponseDTO) => (
+interface CardNewsProps {
+	newsResponseDTO: NewsResponseDTO
+}
+
+export const CardNews = ({ newsResponseDTO }: CardNewsProps) => (
 	<div className='w-1/2 flex rounded shadow bg-[var(--color-level-six)] hover:shadow-lg'>
 		{
-			urlImage &&
-			<img
-				className='pl-3 h-fit py-3 object-cover rounded-t-2xl md:h-auto md:w-48 md:rounded-none md:rounded-l-lg'
-				src='https://www.aboutespanol.com/thmb/oxcVdVmVah-wUyZJVxr_OXn43qc=/3771x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-141249909-597c5a013df78cbb7a279e0a.jpg'
-				alt={title}
-			/>
+			newsResponseDTO.urlImage &&
+				<img
+					className='pl-3 h-fit py-3 object-cover rounded-t-2xl md:h-auto md:w-48 md:rounded-none md:rounded-l-lg'
+					src='https://www.aboutespanol.com/thmb/oxcVdVmVah-wUyZJVxr_OXn43qc=/3771x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-141249909-597c5a013df78cbb7a279e0a.jpg'
+					alt={newsResponseDTO.title}
+				/>
 		}
 		<Preview
-			id={id}
-			title={title}
-			description={description}
-			urlImage={urlImage}
+			id={newsResponseDTO.id}
+			title={newsResponseDTO.title}
+			description={newsResponseDTO.description}
+
 		/>
 	</div>
 )
 
-const Preview = ({ id, title, description }: NewsResponseDTO) => (
+interface PreviewProps {
+	id: number
+	title: string
+	description: string
+}
+
+const Preview = ({ id, title, description }: PreviewProps) => (
 	<div className='w-full flex flex-col justify-between gap-2 p-4'>
 		<div>
 			<h5 className='text-lg mb-2 first-letter:capitalize font-bold tracking-tight text-[var(--color-level-one)]'>{title}</h5>
