@@ -18,5 +18,10 @@ export interface ProductResponseDTO extends ItemResponseDTO {
 }
 
 export interface PageCatalog extends PageDTO {
-  products: Array<ProductResponseDTO>
+  content: Array<ProductResponseDTO>
+}
+
+export type CatalogStateType = {
+  classification: PlantClassificationType | null
+  page: PageCatalog
 }
