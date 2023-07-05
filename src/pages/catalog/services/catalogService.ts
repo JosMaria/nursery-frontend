@@ -2,10 +2,7 @@ import axios from 'axios'
 import { PageDTO, PlantClassificationType } from '../types'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080/api/v1/products',
-  headers: { 
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb25zdWVsbyIsImlhdCI6MTY4ODQ4ODg4NCwiZXhwIjoxNjg4NTc1Mjg0fQ.0R_gIuh7rsSwWJZiYiENEaRkrFaYXza8bTLok2Ik4_k' 
-  }
+  baseURL: 'http://localhost:8080/api/v1/products'
 })
 
 /**
