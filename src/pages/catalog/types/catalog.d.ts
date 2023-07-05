@@ -1,8 +1,4 @@
-export const enum PLANT_STATUS {
-  AVAILABLE,
-  IN_CONSERVATION,
-  NON_EXISTENT
-}
+import { PageDTO, ItemResponseDTO } from '../../../types'
 
 type PlantClassificationType =
   'ORNAMENTAL' |
@@ -16,24 +12,11 @@ type PlantClassificationType =
   'GRASS' |
   'SUCCULENT'
 
-export interface ProductResponseDTO {
-  id: number,
-  commonName: string
-  scientificName: string
-  scientistSurnameInitial: string
-  status: PLANT_STATUS
-  family: string
+
+export interface ProductResponseDTO extends ItemResponseDTO {  
   urlPicture: Array<string>
 }
 
-export interface PageDTO {
-  content: Array<ProductResponseDTO>
-  number: number
-  totalElements: number
-  totalPages: number
-  size: number
-  numberOfElements: number
-  empty: boolean
-  first: boolean
-  last: boolean
+export interface PageCatalog extends PageDTO {
+  products: Array<ProductResponseDTO>
 }

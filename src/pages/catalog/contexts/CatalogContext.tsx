@@ -1,16 +1,16 @@
 import { ReactElement, createContext, useCallback, useEffect, useReducer, useState } from 'react'
 import { getPaginatedProducts } from '../services'
-import { PageDTO, PlantClassificationType } from '../types'
+import { PageCatalog, PlantClassificationType } from '../types'
 
 type CatalogStateType = {
   classification: PlantClassificationType | null
-  page: PageDTO
+  page: PageCatalog
 }
 
 const initialCatalogState: CatalogStateType = {
   classification: null,
   page: {
-    content: [],
+    products: [],
     number: 0,
     totalElements: 0,
     totalPages: 0,

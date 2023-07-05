@@ -4,8 +4,7 @@ import { useCatalogState, useChangePage } from '../hooks'
 
 export const PaginationSection = () => {
   const { firstPage, prevPage, nextPage } = useChangePage()
-  const { page, classification } = useCatalogState()
-  
+  const { page } = useCatalogState()
 
   const {
     first: isFirst,

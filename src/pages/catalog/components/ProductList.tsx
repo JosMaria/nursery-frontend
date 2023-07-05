@@ -3,12 +3,12 @@ import { ProductResponseDTO } from '../types'
 import { useCatalogState } from '../hooks'
 
 export const ProductList = () => {
-  const { page: { content } } = useCatalogState()
+  const { page: { products } } = useCatalogState()
 
   return (
     <div className='w-full grid grid-cols-4 place-items-center gap-5 p-5'>
       {
-        content.map(product => (
+        products.map(product => (
           <ProductItem
             key={product.id}
             product={product}

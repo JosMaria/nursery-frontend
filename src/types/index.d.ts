@@ -6,3 +6,5 @@ export interface AxiosInstanceConfig
 }
 
 export * from './dto'
+
+export * from './types'
