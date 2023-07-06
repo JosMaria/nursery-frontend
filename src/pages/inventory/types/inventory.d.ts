@@ -1,9 +1,10 @@
 import { PageDTO, ItemResponseDTO } from '../../../types';
 
-export interface PageInventory extends PageDTO  {
+export interface PageInventory extends PageDTO {
   content: Array<ItemResponseDTO>
 }
 
 export type InventoryStateType = {
-  state: PageInventory
+  selectedStatus: StatusType | null
+  page: PageInventory
 }

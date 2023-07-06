@@ -30,7 +30,6 @@ const TableHeader = () => {
 }
 
 const TableBody = ({ items }: TableProps) => {
-
   const cellStyle = 'px-6 py-3.5 text-[var(--color-level-one)] font-medium'
   const cellStyleUppercase = `${cellStyle} first-letter:uppercase`
 

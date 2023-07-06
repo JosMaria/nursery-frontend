@@ -22,6 +22,6 @@ export interface PageCatalog extends PageDTO {
 }
 
 export type CatalogStateType = {
-  classification: PlantClassificationType | null
+  selectedClassification: PlantClassificationType | null
   page: PageCatalog
 }
