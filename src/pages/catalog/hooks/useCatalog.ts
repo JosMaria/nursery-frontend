@@ -12,6 +12,6 @@ export const useChangeClassification = () => {
 }
 
 export const useCatalogState = () => {
-  const { state: { classification, page } } = useContext(CatalogContext)
-  return { classification, page }
+  const { state: { selectedClassification, page } } = useContext(CatalogContext)
+  return { selectedClassification, page }
 }

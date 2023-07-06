@@ -1,13 +1,10 @@
-import { ItemResponseDTO } from '../../../types'
+import { useEffect } from "react"
+import { useChangeStatus, useInventoryState } from "../hooks"
 
-interface TableProps {
-  items: Array<ItemResponseDTO>
-}
-
-export const Table = ({ items }: TableProps) => (
+export const Table = () => (
   <table>
     <TableHeader />
-    <TableBody items={items} />
+    <TableBody />
   </table>
 )
 
@@ -29,7 +26,14 @@ const TableHeader = () => {
   )
 }
 
-const TableBody = ({ items }: TableProps) => {
+const TableBody = () => {
+  const { page: { content: items } } = useInventoryState()
+  const { changeStatus } = useChangeStatus()
+
+  useEffect(() => {
+    changeStatus('AVAILABLE')
+  }, [])
+
   const cellStyle = 'px-6 py-3.5 text-[var(--color-level-one)] font-medium'
   const cellStyleUppercase = `${cellStyle} first-letter:uppercase`
 
